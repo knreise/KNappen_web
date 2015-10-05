@@ -1,55 +1,29 @@
-/// <reference path="../system/_references.ts" />
-/// <reference path="config.ts" />
-/// <reference path="settings.ts" />
-/// <reference path="searchproviders/ssrsearch.ts" />
-/// <reference path="searchproviders/datasource.ts" />
-/// <reference path="searchproviders/datasourcedigitalarkivetproperty.ts" />
-/// <reference path="searchproviders/datasourcenorvegiana.ts" />
-/// <reference path="providers/translationprovidernb.ts" />
-/// <reference path="providers/eventprovider.ts" />
-/// <reference path="providers/isearchprovider.ts" />
-/// <reference path="controllers/historycontroller.ts" />
-/// <reference path="providers/multiviewbindingprovider.ts" />
-/// <reference path="providers/pointofinteresttypeprovider.ts" />
-/// <reference path="providers/searchprovider.ts" />
-/// <reference path="models/settingsenums.ts" />
-/// <reference path="models/pointofinterest.ts" />
-/// <reference path="models/searchcriteria.ts" />
-/// <reference path="models/searchcriteriaenums.ts" />
-/// <reference path="models/searchresult.ts" />
-/// <reference path="controllers/windowsizecontroller.ts" />
-/// <reference path="controllers/googleanalyticscontroller.ts" />
-/// <reference path="controllers/loadingscreencontroller.ts" />
-/// <reference path="controllers/mapcontroller.ts" />
-/// <reference path="controllers/poicontroller.ts" />
-/// <reference path="controllers/resultlistcontroller.ts" />
-/// <reference path="controllers/searchcontroller.ts" />
-/// <reference path="controllers/searchviewcontroller.ts" />
-/// <reference path="controllers/settingscontroller.ts" />
-/// <reference path="controllers/userpopupcontroller.ts" />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/// <reference path="../system/_References.ts" />
+/// <reference path="Config.ts" />
+/// <reference path="Settings.ts" />
+/// <reference path="searchproviders/SsrSearch.ts" />
+/// <reference path="searchproviders/DataSource.ts" />
+/// <reference path="searchproviders/DataSourceDigitalarkivetProperty.ts" />
+/// <reference path="searchproviders/DataSourceNorvegiana.ts" />
+/// <reference path="providers/TranslationOroviderNB.ts" />
+/// <reference path="providers/EventProvider.ts" />
+/// <reference path="providers/ISearchProvider.ts" />
+/// <reference path="controllers/HistoryController.ts" />
+/// <reference path="providers/MultiViewBindingProvider.ts" />
+/// <reference path="providers/PointOfInterestTypeProvider.ts" />
+/// <reference path="providers/SearchProvider.ts" />
+/// <reference path="models/SettingsEnums.ts" />
+/// <reference path="models/PointOfInterest.ts" />
+/// <reference path="models/SearchCriteria.ts" />
+/// <reference path="models/SearchCriteriaEnums.ts" />
+/// <reference path="models/SearchResult.ts" />
+/// <reference path="controllers/WindowSizeController.ts" />
+/// <reference path="controllers/GoogleAnalyticsController.ts" />
+/// <reference path="controllers/LoadingScreenController.ts" />
+/// <reference path="controllers/MapController.ts" />
+/// <reference path="controllers/PoiController.ts" />
+/// <reference path="controllers/ResultListController.ts" />
+/// <reference path="controllers/SearchController.ts" />
+/// <reference path="controllers/SearchViewController.ts" />
+/// <reference path="controllers/SettingsController.ts" />
+/// <reference path="controllers/UserPopupController.ts" />
