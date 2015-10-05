@@ -1,4 +1,4 @@
-/// <reference path="../_References.ts" />
+
 
 /**
     Providers
@@ -153,7 +153,7 @@ module App.SearchProviders {
         }
 
 
-        private createPoiDescription(norvegianaDescription: Array): string {
+        private createPoiDescription(norvegianaDescription: Array<string>): string {
             if (!norvegianaDescription)
                 return "";
             

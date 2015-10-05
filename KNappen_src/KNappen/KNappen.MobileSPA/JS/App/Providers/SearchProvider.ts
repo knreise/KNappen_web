@@ -1,4 +1,4 @@
-﻿/// <reference path="../_References.ts" />
+﻿
 
 /**
     Providers
@@ -56,20 +56,17 @@ module App.Providers {
 
         public static SourceDigitalArkivet: string = "Digitalarkivet";
         public static SourceNorvegiana: string = "Norvegiana";
-        public static SourceWikipedia: string = "Wikipedia";
 
         private pageNumber: number;
         private pageSize: number;
 
         private searchNorvegiana: boolean = true;
         private searchDigitalArkivet: boolean = true;
-        private searchWikipedia: boolean = true;
 
         private successCallback: { (searchResult: App.Models.SearchResult): void; } = null;
 
         private searchProviderNorvegiana: App.SearchProviders.DataSourceNorvegiana;
         private searchProviderDigitalarkivet: App.SearchProviders.DataSourceDigitalarkivetProperty;
-        private searchProviderWikipedia: App.SearchProviders.DataSourceWikiLocation;
 
         private currentSearch: SearchHandle = null;
 
@@ -93,12 +90,7 @@ module App.Providers {
                 var category = searchCriteria.category();
                 if (category == config.digitalArkivetPropertyCategory) {
                     this.searchNorvegiana = false;
-                    this.searchWikipedia = false;
-                } else if (category == config.wikiPropertyCategory) {
-                    this.searchNorvegiana = false;
-                    this.searchDigitalArkivet = false;
                 } else {
-                    this.searchWikipedia = false;
                     this.searchDigitalArkivet = false;
                 }
             }
@@ -107,24 +99,18 @@ module App.Providers {
                 var mediaType = searchCriteria.mediaType();
                 if (mediaType != "TEXT") {
                     this.searchDigitalArkivet = false;
-                    this.searchWikipedia = false;
                 }
             }
 
             if (searchCriteria.genre() && searchCriteria.genre().length > 0 && searchCriteria.genre() != "*") {
                 var genre = searchCriteria.genre();
-                if (genre == "wikipedia") {
-                    this.searchNorvegiana = false;
-                    this.searchDigitalArkivet = false;
-                } else if (genre == "digitaltfortalt") {
-                    this.searchWikipedia = false;
+              if (genre == "digitaltfortalt") {
                     this.searchDigitalArkivet = false;
 
                     norvegianaQueryFields = 'abm_contentProvider_text:"Digitalt fortalt"'
                     + ' OR abm_contentProvider_text:Industrimuseum';
 
                 } else if (genre == "fagdata") {
-                    this.searchWikipedia = false;
 
                     norvegianaQueryFields = 'abm_contentProvider_text:Artsdatabanken'
                     + ' OR abm_contentProvider_text:DigitaltMuseum'
@@ -147,11 +133,7 @@ module App.Providers {
                     (errorMessage: string, searchHandle: SearchHandle) => this.searchWithError(SearchProvider.SourceDigitalArkivet, errorMessage, searchHandle));
             }
 
-            if (this.searchWikipedia) {
-                this.searchProviderWikipedia = new App.SearchProviders.DataSourceWikiLocation(searchCriteria,
-                    (searchHandle: SearchHandle) => this.searchWithSuccess(SearchProvider.SourceWikipedia, searchHandle),
-                    (errorMessage: string, searchHandle: SearchHandle) => this.searchWithError(SearchProvider.SourceWikipedia, errorMessage, searchHandle));
-            }
+         
         }
 
         public haltSearch() {
@@ -183,13 +165,6 @@ module App.Providers {
                 }
             }
 
-            if (this.searchWikipedia) {
-                searchHandle.searchStatus[SearchProvider.SourceWikipedia] = true;
-                if (this.searchProviderWikipedia.search(searchHandle)) {
-                    searchHandle.searchCount++;
-                }
-            }
-
             if (searchHandle.searchCount > 0) {
                 setTimeout(() => this.checkTimeout(searchHandle), config.searchTimeoutSeconds * 1000);
             }
@@ -209,8 +184,6 @@ module App.Providers {
                     this.resultCount += this.searchProviderNorvegiana.getResultCount();
                 if (this.searchDigitalArkivet)
                     this.resultCount += this.searchProviderDigitalarkivet.getResultCount();
-                if (this.searchWikipedia)
-                    this.resultCount += this.searchProviderWikipedia.getResultCount();
             }
 
             var start = this.pageSize * (this.pageNumber - 1);
@@ -223,8 +196,6 @@ module App.Providers {
                     this.searchProviderNorvegiana.getNextPoi(poiChooser);
                 if (this.searchDigitalArkivet)
                     this.searchProviderDigitalarkivet.getNextPoi(poiChooser);
-                if (this.searchWikipedia)
-                    this.searchProviderWikipedia.getNextPoi(poiChooser);
 
                 poiChooser.choose();
 

@@ -1,4 +1,5 @@
-/// <reference path="../_References.ts" />
+/// <reference path="../_references.ts" />
+
 module App.Controllers {
     export class SplashScreenController {
         private div: JQuery = null;
@@ -17,6 +18,7 @@ module App.Controllers {
         }
         public PreInit() {
             this.label.html("Readying modules...");
+            startup.finishedPreInit("SplashScreenController");
         }
         public Init() {
             this.label.html("Initializing modules...");

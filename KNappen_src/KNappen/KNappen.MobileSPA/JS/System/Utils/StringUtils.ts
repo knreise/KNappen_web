@@ -1,4 +1,5 @@
-/// <reference path="../../../Scripts/typings/jquery/jquery.d.ts" />
+/// <reference path="../_references.ts" />
+
 /**
     System utilities
     @namespace System.Utils

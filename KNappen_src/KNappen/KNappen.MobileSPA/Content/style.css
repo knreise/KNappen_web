@@ -377,12 +377,12 @@ input[type=text], select, textarea {
 }
 
 .showMoreAccordion {
-    background-image: url(/content/images/AppIcons/moreInfo.png) !important;
+    background-image: url('content/images/AppIcons/moreInfo.png') !important;
     width: 25px;
 }
 
 .showLessAccordion {
-    background-image: url(/content/images/AppIcons/lessInfo.png) !important;
+    background-image: url('content/images/AppIcons/lessInfo.png') !important;
     width: 25px;
 }
 

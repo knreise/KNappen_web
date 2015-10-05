@@ -1,4 +1,4 @@
-/// <reference path="../_References.ts" />
+
 
 /**
     Controller modules
@@ -63,11 +63,12 @@ module App.Controllers {
             @public
         */
         public doNewSearch() {
+            this.firstSearch = false;
 
             if (!this.searchCriteria.pos()) {
                 this.searchCriteria.pos(config.mapStartPos);
             }
-            
+
             this.searchCriteria.pageNumber(1);
 
             // Create a new searchProvider, disable old if any
@@ -86,6 +87,35 @@ module App.Controllers {
             } else {
                 networkHelper.displayNetworkError();
             }
+            //debugger;
+            historyController.addHistorySnapshot();
+            //historyController.addToCurrentSnapshot({ SearchCriteria: this.searchCriteria });
+
+        }
+        public doHistorySearch() {
+            this.firstSearch = false;
+
+            if (!this.searchCriteria.pos()) {
+                this.searchCriteria.pos(config.mapStartPos);
+            }
+
+            // Create a new searchProvider, disable old if any
+            if (this.searchProvider) {
+                this.searchProvider.haltSearch();
+            }
+
+            this.searchProvider = new App.Providers.SearchProvider(this.searchCriteria, (searchResult: App.Models.SearchResult) => {
+                this.searchResultCallback(this, searchResult);
+            });
+
+            // Perform search
+            if (networkHelper.isConnected()) {
+                loadingScreenController.showLoadingScreen("");
+                this.searchProvider.search(this.searchCriteria.pageNumber());
+            } else {
+                networkHelper.displayNetworkError();
+            }
+           
         }
 
         /**
@@ -94,7 +124,17 @@ module App.Controllers {
             @public
         */
         public doSearch() {
+            this.firstSearch = false;
+
             loadingScreenController.showLoadingScreen("");
+            historyController.addHistorySnapshot();
+            //historyController.addToCurrentSnapshot({ SearchCriteria: this.searchCriteria });
+
+            //if (!this.searchProvider)
+            //    this.searchProvider = new App.Providers.SearchProvider(this.searchCriteria, (searchResult: App.Models.SearchResult) => {
+            //        this.searchResultCallback(this, searchResult);
+            //    });
+
             setTimeout(() => this.searchProvider.search(this.searchCriteria.pageNumber()), 25);
         }
 

@@ -1,5 +1,5 @@
-/// <reference path="../../../Scripts/typings/knockout/knockout.d.ts" />
-/// <reference path="../_References.ts" />
+
+
 
 /**
     Model modules
@@ -7,13 +7,13 @@
 */
 module App.Models {
 
-    export interface KnockoutObservablePointOfInterestArray extends KnockoutObservableArray {
-        (): App.Models.PointOfInterest[];
-        (value: App.Models.PointOfInterest[]): void;
+    //export interface KnockoutObservablePointOfInterestArray extends KnockoutObservableArray {
+    //    (): App.Models.PointOfInterest[];
+    //    (value: App.Models.PointOfInterest[]): void;
 
-        subscribe(callback: (newValue: App.Models.PointOfInterest[]) => void , target?: any, topic?: string): KnockoutSubscription;
-        notifySubscribers(valueToWrite: App.Models.PointOfInterest[], topic?: string);
-    }
+    //    subscribe(callback: (newValue: App.Models.PointOfInterest[]) => void , target?: any, topic?: string): KnockoutSubscription;
+    //    notifySubscribers(valueToWrite: App.Models.PointOfInterest[], topic?: string);
+    //}
 
     export class PointOfInterest extends System.Models.PointOfInterestBase {
 
@@ -22,27 +22,27 @@ module App.Models {
             this.tryLicenseAsLink();
         }
 
-        public name: KnockoutObservableString = ko.observable("");
-        public description: KnockoutObservableString = ko.observable("");
-        public link: KnockoutObservableString = ko.observable("");
-        public thumbnail: KnockoutObservableString = ko.observable("");
-        public year: KnockoutObservableString = ko.observable("");
-        public landingPage: KnockoutObservableString = ko.observable("");
-        public license: KnockoutObservableString = ko.observable("");
-        public licenseLink: KnockoutObservableString = ko.observable("");
-        public categories: KnockoutObservableArray = ko.observableArray([]);
-        public topics: KnockoutObservableString = ko.observable("");
-        public ingress: KnockoutObservableString = ko.observable("");
-        public body: KnockoutObservableString = ko.observable("");
-        public creator: KnockoutObservableString = ko.observable("");
-        public institution: KnockoutObservableString = ko.observable("");
-        public owner: KnockoutObservableString = ko.observable("");
-        public tags: KnockoutObservableString = ko.observable("");
-        public references: KnockoutObservableString = ko.observable("");
-        public mediaTypes: KnockoutObservableArray = ko.observableArray([]);
-        public soundUri: KnockoutObservableArray = ko.observableArray([]);
-        public videoUri: KnockoutObservableArray = ko.observableArray([]);
-        public originalVersion: KnockoutObservableString = ko.observable("");
+        public name: KnockoutObservable<string> = ko.observable("");
+        public description: KnockoutObservable<string> = ko.observable("");
+        public link: KnockoutObservable<string> = ko.observable("");
+        public thumbnail: KnockoutObservable<string> = ko.observable("");
+        public year: KnockoutObservable<string> = ko.observable("");
+        public landingPage: KnockoutObservable<string> = ko.observable("");
+        public license: KnockoutObservable<string> = ko.observable("");
+        public licenseLink: KnockoutObservable<string> = ko.observable("");
+        public categories: KnockoutObservableArray<string> = ko.observableArray([]);
+        public topics: KnockoutObservable<string> = ko.observable("");
+        public ingress: KnockoutObservable<string> = ko.observable("");
+        public body: KnockoutObservable<string> = ko.observable("");
+        public creator: KnockoutObservable<string> = ko.observable("");
+        public institution: KnockoutObservable<string> = ko.observable("");
+        public owner: KnockoutObservable<string> = ko.observable("");
+        public tags: KnockoutObservable<string> = ko.observable("");
+        public references: KnockoutObservable<string> = ko.observable("");
+        public mediaTypes: KnockoutObservableArray<string> = ko.observableArray([]);
+        public soundUri: KnockoutObservableArray<string> = ko.observableArray([]);
+        public videoUri: KnockoutObservableArray<string> = ko.observableArray([]);
+        public originalVersion: KnockoutObservable<string> = ko.observable("");
         public lazyLoad: (poi: App.Models.PointOfInterest, data: string, lazyLoadHandle: App.Providers.LazyLoadHandle) => void;
         public lazyLoadData: string;
         private loaded: boolean = false;
@@ -74,6 +74,21 @@ module App.Models {
             for (var i in mediaTypes) {
                 this.iconMediaTypeURL().push(mediaTypes[i].icon);
             }
+        }
+
+        public getHashCode(): string {
+
+            // Create a string with enough info to uniquely identify this POI
+            var str: string =
+                this.source()
+                    + "|" + this.name()
+                    + "|" + this.description()
+                    + "|" + this.link()
+                    + "|" + this.ingress()
+                    + "|" + this.body();
+                
+            // Return the hash
+            return stringUtils.hash(str).toString();
         }
 
         public toRouteFriendly(): PointOfInterest {

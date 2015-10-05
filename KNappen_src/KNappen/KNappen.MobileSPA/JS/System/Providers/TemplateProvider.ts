@@ -1,4 +1,5 @@
-/// <reference path="../_References.ts" />
+/// <reference path="../_references.ts" />
+
 /**
     System provider modules
     @namespace System.Providers

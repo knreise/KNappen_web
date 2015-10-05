@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -13,7 +13,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>KNappen.MobileSPA</RootNamespace>
     <AssemblyName>KNappen.MobileSPA</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
@@ -22,6 +22,14 @@
     <IISExpressUseClassicPipelineMode />
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
+    <MvcProjectUpgradeChecked>true</MvcProjectUpgradeChecked>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <UseGlobalApplicationHostFile />
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -109,6 +117,26 @@
     <Content Include="Content\swf\soundmanager2_flash9.swf" />
     <Content Include="Content\swf\soundmanager2_flash9_debug.swf" />
     <Content Include="Content\swipebox.css" />
+    <Content Include="Content\themes\base\accordion.css" />
+    <Content Include="Content\themes\base\all.css" />
+    <Content Include="Content\themes\base\autocomplete.css" />
+    <Content Include="Content\themes\base\base.css" />
+    <Content Include="Content\themes\base\button.css" />
+    <Content Include="Content\themes\base\core.css" />
+    <Content Include="Content\themes\base\datepicker.css" />
+    <Content Include="Content\themes\base\dialog.css" />
+    <Content Include="Content\themes\base\draggable.css" />
+    <Content Include="Content\themes\base\menu.css" />
+    <Content Include="Content\themes\base\progressbar.css" />
+    <Content Include="Content\themes\base\resizable.css" />
+    <Content Include="Content\themes\base\selectable.css" />
+    <Content Include="Content\themes\base\selectmenu.css" />
+    <Content Include="Content\themes\base\slider.css" />
+    <Content Include="Content\themes\base\sortable.css" />
+    <Content Include="Content\themes\base\spinner.css" />
+    <Content Include="Content\themes\base\tabs.css" />
+    <Content Include="Content\themes\base\theme.css" />
+    <Content Include="Content\themes\base\tooltip.css" />
     <Content Include="Content\TypIcons\typicons.css" />
     <Content Include="Content\TypIcons\typicons.min.css" />
     <Content Include="Content\TypIcons\typicons.svg" />
@@ -248,17 +276,13 @@
     <Content Include="img\zoom-plus-mini.png" />
     <Content Include="img\zoom-world-mini.png" />
     <Content Include="img\zoombar.png" />
+    <TypeScriptCompile Include="JS\App\Controllers\HistoryController.ts" />
     <TypeScriptCompile Include="JS\App\SearchProviders\DataSource.ts" />
     <TypeScriptCompile Include="JS\System\Utils\WorkHelper.ts" />
+    <TypeScriptCompile Include="JS\_References.ts" />
     <TypeScriptCompile Include="PhoneGap\PhoneGapInterop.ts" />
-    <TypeScriptCompile Include="JS\System\Providers\MapStorageProvider.ts" />
-    <TypeScriptCompile Include="JS\System\Providers\MapPreCacheProvider.ts" />
-    <TypeScriptCompile Include="JS\System\Providers\MapCacheProvider.ts" />
     <TypeScriptCompile Include="JS\App\Controllers\WindowSizeController.ts" />
     <TypeScriptCompile Include="JS\App\Controllers\LoadingScreenController.ts" />
-    <Content Include="JS\App\Controllers\LoadingScreenController.js">
-      <DependentUpon>LoadingScreenController.ts</DependentUpon>
-    </Content>
     <Content Include="JS\App\Controllers\LoadingScreenController.min.js">
       <DependentUpon>LoadingScreenController.ts</DependentUpon>
     </Content>
@@ -275,34 +299,8 @@
     <Content Include="JS\App\Providers\EventProvider.min.js">
       <DependentUpon>EventProvider.ts</DependentUpon>
     </Content>
-    <TypeScriptCompile Include="JS\App\Providers\SqlRouteProvider.ts" />
-    <Content Include="JS\App\Providers\RouteProvider.js">
-      <DependentUpon>RouteProvider.ts</DependentUpon>
-    </Content>
-    <Content Include="JS\App\Providers\RouteProvider.ts" />
-    <Content Include="JS\App\Providers\SqlRouteProvider.js">
-      <DependentUpon>SqlRouteProvider.ts</DependentUpon>
-    </Content>
     <Content Include="JS\App\SearchProviders\DataSource.js">
       <DependentUpon>DataSource.ts</DependentUpon>
-    </Content>
-    <Content Include="JS\System\Providers\MapCacheProvider.js">
-      <DependentUpon>MapCacheProvider.ts</DependentUpon>
-    </Content>
-    <Content Include="JS\System\Providers\MapCacheProvider.min.js">
-      <DependentUpon>MapCacheProvider.ts</DependentUpon>
-    </Content>
-    <Content Include="JS\System\Providers\MapPreCacheProvider.js">
-      <DependentUpon>MapPreCacheProvider.ts</DependentUpon>
-    </Content>
-    <Content Include="JS\System\Providers\MapPreCacheProvider.min.js">
-      <DependentUpon>MapPreCacheProvider.ts</DependentUpon>
-    </Content>
-    <Content Include="JS\System\Providers\MapStorageProvider.js">
-      <DependentUpon>MapStorageProvider.ts</DependentUpon>
-    </Content>
-    <Content Include="JS\System\Providers\MapStorageProvider.min.js">
-      <DependentUpon>MapStorageProvider.ts</DependentUpon>
     </Content>
     <TypeScriptCompile Include="JS\System\Providers\TemplateProvider.ts" />
     <Content Include="JS\System\Providers\TemplateProvider.js">
@@ -340,10 +338,10 @@
     <Content Include="JS\System\Utils\Network.js">
       <DependentUpon>Network.ts</DependentUpon>
     </Content>
+    <Content Include="index.html" />
     <Content Include="PhoneGap\cordova_ios.js" />
     <Content Include="PhoneGap\cordova_android.js" />
     <Content Include="PhoneGap\index.html" />
-    <TypeScriptCompile Include="PhoneGap\InteropProviders\SqlProvider.ts" />
     <TypeScriptCompile Include="PhoneGap\InteropProviders\ButtonProvider.ts" />
     <Content Include="PhoneGap\InteropProviders\ButtonProvider.js">
       <DependentUpon>ButtonProvider.ts</DependentUpon>
@@ -357,12 +355,6 @@
     </Content>
     <Content Include="PhoneGap\Providers\GeoLocationProvider.min.js">
       <DependentUpon>GeoLocationProvider.ts</DependentUpon>
-    </Content>
-    <Content Include="PhoneGap\InteropProviders\SqlProvider.js">
-      <DependentUpon>SqlProvider.ts</DependentUpon>
-    </Content>
-    <Content Include="PhoneGap\InteropProviders\SqlProvider.min.js">
-      <DependentUpon>SqlProvider.ts</DependentUpon>
     </Content>
     <Content Include="PhoneGap\PhoneGapInterop.js">
       <DependentUpon>PhoneGapInterop.ts</DependentUpon>
@@ -379,9 +371,22 @@
     <Content Include="PhoneGap\_References.min.js">
       <DependentUpon>_References.ts</DependentUpon>
     </Content>
+    <Content Include="Content\toastr.scss" />
+    <None Include="Scripts\jquery-2.1.4.intellisense.js" />
+    <Content Include="Scripts\jquery-2.1.4.js" />
+    <Content Include="Scripts\jquery-2.1.4.min.js" />
+    <Content Include="Scripts\jquery-ui-1.11.4.js" />
+    <Content Include="Scripts\jquery-ui-1.11.4.min.js" />
+    <Content Include="Scripts\jquery.ba-bbq.js" />
+    <Content Include="Scripts\jquery.ba-bbq.min.js" />
     <Content Include="Scripts\jquery.jplayer.js" />
     <Content Include="Scripts\jquery.swipebox.min.js" />
     <Content Include="Scripts\knockout-2.3.0.js" />
+    <Content Include="Scripts\knockout-3.3.0.debug.js" />
+    <Content Include="Scripts\knockout-3.3.0.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\moment-with-locales.js" />
+    <Content Include="Scripts\moment-with-locales.min.js" />
     <Content Include="Scripts\OpenLayers.light.debug.js" />
     <Content Include="Scripts\OpenLayers.mobile.debug.js" />
     <Content Include="Scripts\OpenLayers.mobile.js" />
@@ -389,18 +394,12 @@
     <Content Include="Scripts\typings\videojs\videojs.d.ts" />
     <Content Include="Scripts\video.js" />
     <Content Include="Templates\POIPreview.html" />
+    <Content Include="Templates\Views\About.html" />
     <Content Include="Templates\Views\POIDetails.html" />
     <Content Include="UnitTests\IUnitTest.js.map">
       <DependentUpon>IUnitTest.ts</DependentUpon>
     </Content>
     <TypeScriptCompile Include="JS\App\Providers\PointOfInterestTypeProvider.ts" />
-    <TypeScriptCompile Include="JS\App\Controllers\FeedbackController.ts" />
-    <Content Include="JS\App\Controllers\FeedbackController.js">
-      <DependentUpon>FeedbackController.ts</DependentUpon>
-    </Content>
-    <Content Include="JS\App\Controllers\FeedbackController.min.js">
-      <DependentUpon>FeedbackController.ts</DependentUpon>
-    </Content>
     <TypeScriptCompile Include="JS\App\Controllers\GoogleAnalyticsController.ts" />
     <Content Include="JS\App\Controllers\GoogleAnalyticsController.js">
       <DependentUpon>GoogleAnalyticsController.ts</DependentUpon>
@@ -421,13 +420,6 @@
     <Content Include="JS\App\Providers\PointOfInterestTypeProvider.min.js">
       <DependentUpon>PointOfInterestTypeProvider.ts</DependentUpon>
     </Content>
-    <TypeScriptCompile Include="JS\App\SearchProviders\DataSourceWikiLocation.ts" />
-    <Content Include="JS\App\SearchProviders\DataSourceWikiLocation.js">
-      <DependentUpon>DataSourceWikiLocation.ts</DependentUpon>
-    </Content>
-    <Content Include="JS\App\SearchProviders\DataSourceWikiLocation.min.js">
-      <DependentUpon>DataSourceWikiLocation.ts</DependentUpon>
-    </Content>
     <Content Include="JS\App\SearchProviders\SSRSearch.js">
       <DependentUpon>SSRSearch.ts</DependentUpon>
     </Content>
@@ -435,13 +427,6 @@
       <DependentUpon>SSRSearch.ts</DependentUpon>
     </Content>
     <Content Include="JS\App\SearchProviders\SSRSearch.ts" />
-    <TypeScriptCompile Include="JS\System\Providers\PhoneGapProvider.ts" />
-    <Content Include="JS\System\Providers\PhoneGapProvider.js">
-      <DependentUpon>PhoneGapProvider.ts</DependentUpon>
-    </Content>
-    <Content Include="JS\System\Providers\PhoneGapProvider.min.js">
-      <DependentUpon>PhoneGapProvider.ts</DependentUpon>
-    </Content>
     <TypeScriptCompile Include="JS\System\Providers\StorageProvider.ts" />
     <Content Include="JS\System\Providers\StorageProvider.js">
       <DependentUpon>StorageProvider.ts</DependentUpon>
@@ -451,13 +436,6 @@
     </Content>
     <Content Include="Scripts\cache.js" />
     <Content Include="Scripts\jquery.ui.touch-punch.min.js" />
-    <TypeScriptCompile Include="JS\App\Controllers\RouteController.ts" />
-    <Content Include="JS\App\Controllers\RouteController.js">
-      <DependentUpon>RouteController.ts</DependentUpon>
-    </Content>
-    <Content Include="JS\App\Controllers\RouteController.min.js">
-      <DependentUpon>RouteController.ts</DependentUpon>
-    </Content>
     <Content Include="Scripts\knockout.mapping-latest.debug.js" />
     <Content Include="Scripts\knockout.mapping-latest.js" />
     <Content Include="Scripts\LatLon.js" />
@@ -667,9 +645,6 @@
     <Content Include="PhoneGap\InteropProviders\ButtonProvider.js.map">
       <DependentUpon>ButtonProvider.ts</DependentUpon>
     </Content>
-    <Content Include="PhoneGap\InteropProviders\SqlProvider.js.map">
-      <DependentUpon>SqlProvider.ts</DependentUpon>
-    </Content>
     <Content Include="PhoneGap\Providers\GeoLocationProvider.js.map">
       <DependentUpon>GeoLocationProvider.ts</DependentUpon>
     </Content>
@@ -682,18 +657,13 @@
     <Content Include="JS\App\Controllers\MapController.min.js.map">
       <DependentUpon>MapController.js</DependentUpon>
     </Content>
-    <Content Include="JS\App\Controllers\LoadingScreenController.js.map">
-      <DependentUpon>LoadingScreenController.ts</DependentUpon>
-    </Content>
     <Content Include="PhoneGap\video.min.js.map">
       <DependentUpon>video.js</DependentUpon>
-    </Content>
-    <Content Include="JS\App\Providers\RouteProvider.js.map">
-      <DependentUpon>RouteProvider.js</DependentUpon>
     </Content>
     <Content Include="JS\App\SearchProviders\DataSource.js.map">
       <DependentUpon>DataSource.js</DependentUpon>
     </Content>
+    <Content Include="Scripts\jquery-2.1.4.min.map" />
     <None Include="Scripts\OpenLayers.js_DoNotUse_NotModified" />
     <None Include="Scripts\OpenLayers.light.debug.js_DoNotUse_NotModified" />
     <None Include="Scripts\OpenLayers.light.js_DoNotUse_NotModified" />
@@ -703,7 +673,6 @@
     <Content Include="Scripts\toastr.js" />
     <Content Include="Scripts\toastr.min.js" />
     <Content Include="Scripts\typings\toastr\toastr.d.ts" />
-    <Content Include="Test.html" />
     <Content Include="theme\default\google.css" />
     <Content Include="theme\default\google.tidy.css" />
     <Content Include="theme\default\ie6-style.css" />
@@ -822,20 +791,11 @@
     <Content Include="JS\System\Providers\HttpDownloadProvider.js.map">
       <DependentUpon>HttpDownloadProvider.ts</DependentUpon>
     </Content>
-    <Content Include="JS\App\Controllers\RouteController.js.map">
-      <DependentUpon>RouteController.ts</DependentUpon>
-    </Content>
     <Content Include="JS\App\Providers\PointOfInterestTypeProvider.js.map">
       <DependentUpon>PointOfInterestTypeProvider.ts</DependentUpon>
     </Content>
-    <Content Include="JS\App\Controllers\FeedbackController.js.map">
-      <DependentUpon>FeedbackController.ts</DependentUpon>
-    </Content>
     <Content Include="JS\App\Controllers\GoogleAnalyticsController.js.map">
       <DependentUpon>GoogleAnalyticsController.ts</DependentUpon>
-    </Content>
-    <Content Include="JS\App\SearchProviders\DataSourceWikiLocation.js.map">
-      <DependentUpon>DataSourceWikiLocation.ts</DependentUpon>
     </Content>
     <Content Include="Content\TypIcons\typicons.eot" />
     <Content Include="Content\TypIcons\typicons.ttf" />
@@ -845,9 +805,6 @@
     </Content>
     <Content Include="JS\App\Controllers\ResultListController.min.js.map">
       <DependentUpon>ResultListController.js</DependentUpon>
-    </Content>
-    <Content Include="JS\System\Providers\PhoneGapProvider.js.map">
-      <DependentUpon>PhoneGapProvider.ts</DependentUpon>
     </Content>
     <Content Include="JS\System\Providers\StorageProvider.js.map">
       <DependentUpon>StorageProvider.ts</DependentUpon>
@@ -869,18 +826,6 @@
     </Content>
     <Content Include="PhoneGap\PhoneGapInterop.min.js.map">
       <DependentUpon>PhoneGapInterop.js</DependentUpon>
-    </Content>
-    <Content Include="JS\System\Providers\MapStorageProvider.js.map">
-      <DependentUpon>MapStorageProvider.ts</DependentUpon>
-    </Content>
-    <Content Include="JS\System\Providers\MapPreCacheProvider.js.map">
-      <DependentUpon>MapPreCacheProvider.ts</DependentUpon>
-    </Content>
-    <Content Include="JS\System\Providers\MapPreCacheProvider.min.js.map">
-      <DependentUpon>MapPreCacheProvider.js</DependentUpon>
-    </Content>
-    <Content Include="JS\System\Providers\MapCacheProvider.js.map">
-      <DependentUpon>MapCacheProvider.ts</DependentUpon>
     </Content>
     <Content Include="Scripts\jquery-1.9.1.min.js" />
     <Content Include="Scripts\jquery-ui-1.10.2.min.js" />
@@ -916,6 +861,9 @@
     <Content Include="Scripts\jquery.mobile-1.3.0.min.js" />
     <Content Include="Scripts\typings\phonegap\phonegap.d.ts" />
     <Content Include="Scripts\typings\requirejs\require.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\jquery.bbq\jquery.bbq.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\jquery\jquery.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\moment\moment-node.d.ts" />
     <TypeScriptCompile Include="UnitTests\HttpDownloadProviderTest.ts" />
     <Content Include="UnitTests\HttpDownloadProviderTest.js">
       <DependentUpon>HttpDownloadProviderTest.ts</DependentUpon>
@@ -1006,7 +954,6 @@
       <DependentUpon>Startup.ts</DependentUpon>
     </Content>
     <Content Include="Scripts\moment.min.js" />
-    <Content Include="Scripts\typings\jquery\jquery.d.ts" />
     <Content Include="Scripts\typings\moment\moment.d.ts" />
     <TypeScriptCompile Include="UnitTests\DataSourceNorvegianaTest.ts" />
     <Content Include="UnitTests\DataSourceNorvegianaTest.js">
@@ -1038,9 +985,16 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -1079,12 +1033,24 @@
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
     <TypeScriptTarget>ES3</TypeScriptTarget>
     <TypeScriptIncludeComments>true</TypeScriptIncludeComments>
-    <TypeScriptSourceMap>true</TypeScriptSourceMap>
+    <TypeScriptSourceMap>False</TypeScriptSourceMap>
+    <TypeScriptGeneratesDeclarations>False</TypeScriptGeneratesDeclarations>
+    <TypeScriptModuleKind>amd</TypeScriptModuleKind>
+    <TypeScriptCompileOnSaveEnabled>True</TypeScriptCompileOnSaveEnabled>
+    <TypeScriptNoImplicitAny>False</TypeScriptNoImplicitAny>
+    <TypeScriptRemoveComments>False</TypeScriptRemoveComments>
+    <TypeScriptOutFile />
+    <TypeScriptOutDir />
+    <TypeScriptNoEmitOnError>True</TypeScriptNoEmitOnError>
+    <TypeScriptMapRoot />
+    <TypeScriptSourceRoot />
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)' == 'Release'">
     <TypeScriptTarget>ES3</TypeScriptTarget>
-    <TypeScriptIncludeComments>false</TypeScriptIncludeComments>
+    <TypeScriptIncludeComments>true</TypeScriptIncludeComments>
     <TypeScriptSourceMap>false</TypeScriptSourceMap>
+    <TypeScriptGeneratesDeclarations>True</TypeScriptGeneratesDeclarations>
+    <TypeScriptModuleKind>amd</TypeScriptModuleKind>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.                                                                                      

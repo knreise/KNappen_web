@@ -1,4 +1,4 @@
-/// <reference path="../_References.ts" />
+
 module App.Providers {
     
     export interface ISearchProvider {

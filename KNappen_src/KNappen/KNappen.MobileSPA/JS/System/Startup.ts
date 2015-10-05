@@ -1,5 +1,5 @@
-/// <reference path="Diagnostics/Log.ts" />
-/// <reference path="../../Scripts/typings/jquery/jquery.d.ts" />
+
+
 
 /**
     System modules
@@ -69,10 +69,20 @@ module System {
         public addPostInit(eventCallback: { (): void; }, moduleName?: string) {
             this.addEventHandler('PostInit', eventCallback, moduleName);
         }
+        /**
+          * Add event handler to StartupDone event. (executed last)
+          * @method System.Startup#addDone
+          * @param eventCallback Callback function with empty signature.
+          * @param {string} [moduleName] Optional name of module (for error logging if exception).
+          */
+        public addStartupDone(eventCallback: { (): void; }, moduleName?: string) {
+            this.addEventHandler('StartupDone', eventCallback, moduleName);
+        }
 
         /** @ignore */
         private addEventHandler(eventName: string, eventCallback: { (): void; }, moduleName?: string) {
-            this.eventHooks.on(eventName, function () {
+            log.debug("Startup", "Event hookup to " + eventName + ": " + moduleName);
+            this.eventHooks.on(eventName, () => {
                 try {
                     eventCallback();
                 } catch (error) {
@@ -85,7 +95,7 @@ module System {
         public finishedLoad(moduleName: string): void {
             this.loadModulesCount--;
             log.debug("Startup", "Module '" + moduleName + "' finished loading, currently " + this.loadModulesCount + " loading modules");
-
+            //debugger;
             if (this.loadModulesCount == 0) {
                 this.continueWithLoad();
             }
@@ -106,19 +116,28 @@ module System {
           */
         private continueWithLoad() {
             log.debug("Startup", "Load finished, proceeding with startup procedure.");
+            log.debug("Startup", "PreInit(): Start");
             setTimeout(() => this.eventHooks.trigger("PreInit"), 10);
+            log.debug("Startup", "PreInit(): Done");
         }
 
         private continueWithPreInit() {
-            var self = this;
 
             log.debug("Startup", "PreInit finished, proceeding with startup procedure.");
-            
-            setTimeout(function () {
+            var self = this;
+            setTimeout(() => {
+                log.debug("Startup", "Init(): Start");
                 self.eventHooks.trigger('Init');
-                setTimeout(function () {
+                setTimeout(() => {
+                    log.debug("Startup", "Init(): Done");
+                    log.debug("Startup", "PostInit(): Start");
                     self.eventHooks.trigger('PostInit');
                     loadingScreenController.hideLoadingScreen();
+                    setTimeout(() => {
+                        log.debug("Startup", "PostInit(): Done");
+                        log.debug("Startup", "StartupDone(): Start");
+                        self.eventHooks.trigger('StartupDone');
+                    }, 10);
                 }, 10);
             }, 10);
         }
@@ -128,11 +147,10 @@ module System {
           * @method System.Startup#executeStartup
           */
         public executeStartup() {
-            var _this = this;
-            setTimeout(function () {
+            setTimeout(() => {
                 loadingScreenController.showLoadingScreen("");
-                log.debug("Startup", "Loading modules... " + _this.loadModulesCount + " modules to load.");
-                _this.eventHooks.trigger('Load');
+                log.debug("Startup", "Loading modules... " + this.loadModulesCount + " modules to load.");
+                this.eventHooks.trigger('Load');
             });
         }
     }

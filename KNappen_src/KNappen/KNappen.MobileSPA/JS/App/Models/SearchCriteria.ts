@@ -1,6 +1,6 @@
-/// <reference path="SearchCriteriaEnums.ts" />
-/// <reference path="../../../Scripts/typings/knockout/knockout.d.ts" />
-/// <reference path="../../System/Models/Position.ts" />
+
+
+
 
 /**
     Model modules
@@ -23,60 +23,60 @@ module App.Models
             Query
             @member App.Models.SearchCriteria#query
             @public
-            @type {KnockoutObservableString}
+            @type {KnockoutObservable<string>}
         */
-        public query: KnockoutObservableString = ko.observable(null);
+        public query: KnockoutObservable<string> = ko.observable(null);
         /**
             The user's position
             @member App.Models.SearchCriteria#pos
             @public
-            @type {System.Models.KnockoutObservablePosition}
+            @type {KnockoutObservable<System.Models.Position>}
         */
-        public pos: System.Models.KnockoutObservablePosition = <System.Models.KnockoutObservablePosition>ko.observable();
-        /**
+        public pos: KnockoutObservable<System.Models.Position> = <any>ko.observable();
+        /** 
             Radius for the search around the user's position, 1 kilometer by default
             @member App.Models.SearchCriteria#radius
             @public
-            @type {KnockoutObservableNumber}
+            @type {KnockoutObservable<number>}
         */
-        public radius: KnockoutObservableNumber = ko.observable(10);
+        public radius: KnockoutObservable<number> = ko.observable(10);
         /**
             Amount of rows fetched during search
             @member App.Models.SearchCriteria#rows
             @public
-            @type {KnockoutObservableNumber}
+            @type {KnockoutObservable<number>}
         */
-        public rows: KnockoutObservableNumber = ko.observable(20);
+        public rows: KnockoutObservable<number> = ko.observable(20);
         /**
             Page number for this search
             @member App.Models.SearchCriteria#pageNumber
             @public
-            @type {KnockoutObservableNumber}
+            @type {KnockoutObservable<number>}
         */
-        public pageNumber: KnockoutObservableNumber = ko.observable(1);
+        public pageNumber: KnockoutObservable<number> = ko.observable(1);
         /**
             Category
             @member App.Models.SearchCriteria#category
             @public
-            @type {KnockoutObservableString}
+            @type {KnockoutObservable<string>}
         */
-        public category: KnockoutObservableString = ko.observable("*");
+        public category: KnockoutObservable<string> = ko.observable("*");
 
         /**
             Genre
             @member App.Models.SearchCriteria#category
             @public
-            @type {KnockoutObservableString}
+            @type {KnockoutObservable<string>}
         */
-        public genre: KnockoutObservableString = ko.observable("*");
+        public genre: KnockoutObservable<string> = ko.observable("*");
 
         /**
             MediaType
             @member App.Models.SearchCriteria#MediaType
             @public
-            @type {KnockoutObservableString}
+            @type {KnockoutObservable<string>}
         */
-        public mediaType: KnockoutObservableString = ko.observable("*");
+        public mediaType: KnockoutObservable<string> = ko.observable("*");
 
         /**
             TODO

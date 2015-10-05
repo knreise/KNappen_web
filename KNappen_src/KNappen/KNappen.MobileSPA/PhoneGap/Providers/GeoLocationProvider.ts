@@ -5,13 +5,11 @@ module PhoneGap.Providers {
         public lastKnownPosition: any = null;
 
         public PostInit() {
-            var _this = this;
-
             log.debug("GeoLocationProvider", "PostInit: watchPosition: " + compatibilityInfo.isMobile);
 
             if (compatibilityInfo.isMobile) {
                 navigator.geolocation.watchPosition(
-                    function (position) {
+                    position => {
                         log.verboseDebug("GeoLocationProvider", "Received geolocation: "
                             + 'Latitude: ' + position.coords.latitude + ', '
                             + 'Longitude: ' + position.coords.longitude + ', '
@@ -20,12 +18,12 @@ module PhoneGap.Providers {
                             + 'Altitude Accuracy: ' + position.coords.altitudeAccuracy + ', '
                             + 'Heading: ' + position.coords.heading + ', '
                             + 'Speed: ' + position.coords.speed + ', '
-                            + 'Timestamp: ' + new Date(position.timestamp) + '');
+                            + 'Timestamp: ' + new Date(<any>position.timestamp) + '');
 
-                        _this.lastKnownPosition = position;
+                        this.lastKnownPosition = position;
                         try {
-                            if (_this.lastKnownPosition)
-                                _this.UpdateGeoLocation(position);
+                            if (this.lastKnownPosition)
+                                this.UpdateGeoLocation(position);
 
                         } catch (exception) {
                             log.error("GeoLocationProvider", "Exception sending position: " + exception);
@@ -44,18 +42,19 @@ module PhoneGap.Providers {
         }
 
         private UpdateGeoLocation(position: Position): void {
-            phoneGapProvider.callbackGeoLocationUpdate(
-                position.coords.latitude,
-                position.coords.longitude,
-                position.coords.altitude,
-                position.coords.accuracy,
-                position.coords.altitudeAccuracy,
-                position.coords.heading,
-                position.coords.speed,
-                position.timestamp);
+            //    phoneGapProvider.callbackGeoLocationUpdate(
+            //        position.coords.latitude,
+            //        position.coords.longitude,
+            //        position.coords.altitude,
+            //        position.coords.accuracy,
+            //        position.coords.altitudeAccuracy,
+            //        position.coords.heading,
+            //        position.coords.speed,
+            //        <any>position.timestamp);
         }
 
     }
 }
+
 var geoLocationProvider = new PhoneGap.Providers.GeoLocationProvider();
 startup.addPostInit(function () { geoLocationProvider.PostInit(); }, "GeoLocationProvider");

@@ -1,4 +1,4 @@
-/// <reference path="../_References.ts" />
+
 
 /**
     Controller modules
@@ -30,19 +30,6 @@ module App.Controllers {
 
             var self = this;
 
-            $("#saveListAsRoute").mousedown(function () {
-                mapController.addResultToCache();
-            });
-
-            $("#deleteRoute").mousedown(function (event) {
-                var routeId = $("#deleteRoute").attr('routeId');
-                if (routeId) {
-                    routeController.deleteRoute(routeId);
-                    userPopupController.sendSuccess(tr.translate("ROUTE_DELETED"), tr.translate("ROUTE_DELETED_MSG"));
-                    self.renderView([], 0);
-                    viewController.goBack();
-                }
-            });
         }
 
         private updateDistance(pos: System.Models.Position) {
@@ -146,7 +133,6 @@ module App.Controllers {
 
                 $("#" + uniqueIdDelete).mousedown(() => {
                     pois = pois.filter((element: App.Models.PointOfInterest) => (element.id() != poi.id()));
-                    routeController.updateRoute(routeId, pois);
                     resultListController.renderView(pois, pois.length, null, routeId);
                 });
             });

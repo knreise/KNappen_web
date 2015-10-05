@@ -1,4 +1,4 @@
-﻿/// <reference path="../_References.ts" />
+﻿
 
 /**
     Controller modules
@@ -45,7 +45,8 @@ module App.Controllers {
             });
 
             viewController.addPostSelectEvent(function (event, oldView, newView) {
-                if (oldView && oldView.name == "poiView") poiController.closeDetail();
+                if (oldView && oldView.name == "poiView")
+                    poiController.closeDetail();
             });
             viewController.addSelectEvent(function (event: JQueryEventObject, oldView: System.GUI.ViewControllerItem, newView: System.GUI.ViewControllerItem) {
                 if (newView.name === "poiView") {
@@ -58,6 +59,41 @@ module App.Controllers {
                     }
                 }
             });
+
+            searchController.addSearchResultCallback(this.searchResultHandler);
+        }
+
+        private searchResultHandler(event: JQueryEventObject, searchResult: App.Models.SearchResult, inRoute: boolean) {
+            // We only act if we have a previous POI selection
+            if (!historyController || !historyController.restoredState || !historyController.restoredState['POI'])
+                return;
+
+            setTimeout(() => {
+                debugger;
+
+                var selectedHash = historyController.restoredState['POI'];
+                //if (selectedHash == "null")
+                //    return;
+
+                // Figure out which by brutally calculating hash of all result items
+                var poi = null;
+                $.each(searchResult.items(), function (k, v: App.Models.PointOfInterest) {
+                    try {
+                        if (v.getHashCode() === selectedHash) {
+                            poi = v;
+                            return;
+                        }
+                    } catch (exception) {
+                        log.debug("PoiController", "Error on getting hash for poi.");
+                    }
+                });
+                // Nothing found?
+                if (!poi)
+                    return;
+
+                // Open it
+                poiController.OpenDetail(poi);
+            }, 1000);
         }
 
         /**
@@ -95,7 +131,7 @@ module App.Controllers {
             var poiIngress = this.highlightWord(poi.GetFormatedIngress(), poi);
             content.siblings("#ingressPanel").append(poiIngress);
 
-            phoneGapProvider.fixALinksIfPhoneGap(content);
+            //phoneGapProvider.fixALinksIfPhoneGap(content);
 
             // Hook up actions
             content.find("#closePreviewBtn").mousedown(() => {
@@ -118,6 +154,8 @@ module App.Controllers {
         */
         public OpenDetail(poi: App.Models.PointOfInterest) {
             log.debug("PoiController", "OpenDetail");
+
+            historyController.addToCurrentSnapshot({ POI: poi.getHashCode() });
 
             $("#poiPreview #openDetailBtn").hide();
 
@@ -160,7 +198,7 @@ module App.Controllers {
             poiView.html('');
             poiView.append(poiViewHeader);
             poiView.append(poiViewBody);
-            phoneGapProvider.fixALinksIfPhoneGap(poiView);
+            //phoneGapProvider.fixALinksIfPhoneGap(poiView);
 
             // Show view
             viewController.selectView("poiView");
@@ -184,78 +222,7 @@ module App.Controllers {
             //poiView.find('#detailAccordion .ui-accordion-content').show();
             var addPoiToRouteForm = poiView.find("#addPoiToRouteForm");
             var listExistingRoutes = poiView.find("#listExistingRoutes");
-
-            // Show list of existing routes to add to
-            poiView.find("#addPoiToRoute").mousedown(() => {
-                addPoiToRouteForm.show();
-                listExistingRoutes.empty();
-                routeController.routeProvider.userRoutes.getRoutes().forEach((v: App.Providers.RouteItem, k) => {
-                    var item = $("<option class='routeName' id='route_" + v.id() + "'>" + v.name() + "</option>");
-                    listExistingRoutes.append(item);
-                });
-            });
-
-
-            // Set up "Create new route-button"
-            poiView.find("#createNewRouteBtn").mousedown(() => {
-
-                var name = poiView.find("#newRouteName").val();
-
-                if (name != "") {
-                    poiView.find("#newRouteName").val("");
-
-                    // Check if route name exists
-                    if (routeController.routeProvider.userRoutes.findRouteByName(name) != null) {
-                        userPopupController.sendInfo(tr.translate("Route exists"), tr.translate("A route with this name already exists"));
-                        return;
-                    }
-                    // Create route
-                    var route = routeController.createRoute(name);
-
-                    // Add current poi to new route
-                    route.pois.push(poi.toRouteFriendly());
-
-                    // Save route
-                    routeController.routeProvider.saveRoute(route);
-
-                    userPopupController.sendSuccess(tr.translate("POI added"), tr.translate("POI added to route"));
-                    addPoiToRouteForm.hide();
-                }
-                else {
-                    var selectedRouteName = $("#listExistingRoutes").children(":selected").val();
-
-                    // Check if route is valid
-                    if (selectedRouteName == null) {
-                        userPopupController.sendInfo(tr.translate("POI not added"), tr.translate("Add a new route or select one from the dropdown"));
-                        return;
-                    }
-
-                    var route = routeController.routeProvider.userRoutes.findRouteByName(selectedRouteName);
-
-                    // Loop through pois in route to check if it is already there
-                    for (var i in route.pois()) {
-                        var item = route.pois()[i];
-                        if (poi.source() == item.source() && poi.id() == item.id())
-                        {
-                            userPopupController.sendInfo(tr.translate("POI not added"), tr.translate("POI already exists"));
-                            return;
-                        }
-                    }
-
-                    if (route.poisLoaded()) {
-                        this.savePoi(poi, route);
-                    } else {
-                        loadingScreenController.showLoadingScreen("Lagrer");
-
-                        routeController.routeProvider.loadPois(route, () => {
-                            this.savePoi(poi, route);
-                            loadingScreenController.hideLoadingScreen();
-                        });
-                    }
-
-                    addPoiToRouteForm.hide();
-                }
-            });
+            
 
             //return to previous view when closing the dialog, should this be handled some other way,
             //such as placing the poiview on top of current view instead? how?
@@ -266,15 +233,6 @@ module App.Controllers {
 
         }
 
-        private savePoi(poi: App.Models.PointOfInterest, route: App.Providers.RouteItem) {
-            // Add current poi to route
-            route.pois.push(poi.toRouteFriendly());
-            route.isCached(false);
-
-            // Save route
-            routeController.routeProvider.saveRoute(route);
-            userPopupController.sendSuccess(tr.translate("POI added"), tr.translate("POI added to route"));
-        }
 
         private highlightWord(text: string, poi: App.Models.PointOfInterest): string {
             var color = "yellow";
@@ -292,6 +250,7 @@ module App.Controllers {
             @public     
         */
         public closeDetail() {
+            historyController.addToCurrentSnapshot({ POI: null });
             $("#poiPreview").removeClass("poiPreviewActiveDetail");
             $("#poiPreview #openDetailBtn").show();
             this.clearDetail();
@@ -340,9 +299,9 @@ module App.Controllers {
                     }
 
                     var player = $('<img id="playVideo" src="' + config.poiVideoPlayerIconAndroid + '" class="middle"/>');
-                    player.mousedown(path, function (event: JQueryMouseEventObject) {
-                        phoneGapProvider.playVideo(event.data);
-                    });
+                    //player.mousedown(path, function (event: JQueryMouseEventObject) {
+                    //    phoneGapProvider.playVideo(event.data);
+                    //});
 
                     videoDiv.append(player);
                 }
@@ -409,6 +368,7 @@ module App.Controllers {
                             cssClass: "jp-video-custom"
                         }
                     });
+                    //});
 
                     videoDiv.append("<br />");
                 }

@@ -16,6 +16,7 @@ module PhoneGap {
         constructor() {
             if (compatibilityInfo.isMobile) {
                 // Don't trigger startup until we are ready.
+                debugger;
                 startup.autoStartup = false;
 
                 this.bindEvents();
@@ -63,7 +64,7 @@ module PhoneGap {
 
         public onExitApp() {
             log.info("PhoneGapInterop", "Application exiting...");
-            navigator.app.exitApp();
+            (<any>navigator).app.exitApp();
         }
     }
 }

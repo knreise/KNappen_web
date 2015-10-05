@@ -1,4 +1,4 @@
-﻿/// <reference path="../_References.ts" />
+﻿
 
 /**
     Providers
@@ -60,13 +60,13 @@ module App.Providers {
             translater.addTranslation("Send feedback", "Send tilbakemelding");
             translater.addTranslation("Cancel", "Avbryt");
             translater.addTranslation("Create", "Opprett");
-            translater.addTranslation("Create route", "Opprett rute");
-            translater.addTranslation("Create route from search", "Opprett rute fra s&oslash;k");
+            //translater.addTranslation("Create route", "Opprett rute");
+            //translater.addTranslation("Create route from search", "Opprett rute fra s&oslash;k");
             translater.addTranslation("POI added", "Lagt til");
             translater.addTranslation("POI added to route", "Interessepunkt lagt til rute");
             translater.addTranslation("POI not added", "Ikke lagt til");
             translater.addTranslation("POI already exists", "Interessepunkt er allerede lagt til");
-            translater.addTranslation("Add a new route or select one from the dropdown", "Legg til ny rute eller velg en fra nedtreksfeltet");
+            //translater.addTranslation("Add a new route or select one from the dropdown", "Legg til ny rute eller velg en fra nedtreksfeltet");
             translater.addTranslation("Description", "Beskrivelse");
             translater.addTranslation("More information", "Mer informasjon");
             translater.addTranslation("Map", "Kart");
@@ -79,22 +79,25 @@ module App.Providers {
             translater.addTranslation("About", "Om");
             translater.addTranslation("Debug log", "Debug log");
             translater.addTranslation("Map", "Kart");
-            translater.addTranslation("Wikipedia article", "Artikkel på Wikipedia");
             translater.addTranslation("No datasources", "Ingen datakilder");
             translater.addTranslation("Search criteria results in 0 datasources. Try modifying your search.", "S&oslash;kekriteriene angitt gir 0 datakilder. Pr&oslash;v &aring; endre s&oslash;kekriterier.");
             translater.addTranslation("Error searching", "Feil ved søk");
-            translater.addTranslation("Route created", "Rute opprettet");
-            translater.addTranslation("The route '{0}' was created.", "Ruten '{0}' ble opprettet.");
-            translater.addTranslation("ROUTE_DELETED", "Rute slettet");
-            translater.addTranslation("ROUTE_DELETED_MSG", "Ruten er nå slettet");
-            translater.addTranslation("ROUTE_NOT_ADDED", "Rute ikke lagt til");
-            translater.addTranslation("ROUTE_NOT_ADDED_MSG", "Allerede en rute med det navnet");
-            translater.addTranslation("Follow route", "F&oslash;lg rute");
-            translater.addTranslation("Edit", "Rediger");
-            translater.addTranslation("Published", "Publisert");
-            translater.addTranslation("The route has been published.", "Ruten har blitt publisert.");
-            translater.addTranslation("Not published", "Ikke publisert");
-            translater.addTranslation("The route has not been published.", "Ruten ble ikke publisert.");
+            //translater.addTranslation("Route created", "Rute opprettet");
+            //translater.addTranslation("The route '{0}' was created.", "Ruten '{0}' ble opprettet.");
+            //translater.addTranslation("ROUTE_DELETED", "Rute slettet");
+            //translater.addTranslation("ROUTE_DELETED_MSG", "Ruten er nå slettet");
+            //translater.addTranslation("ROUTE_NOT_ADDED", "Rute ikke lagt til");
+            //translater.addTranslation("ROUTE_NOT_ADDED_MSG", "Allerede en rute med det navnet");
+            //translater.addTranslation("Follow route", "F&oslash;lg rute");
+            //translater.addTranslation("Edit", "Rediger");
+            //translater.addTranslation("The route has been published.", "Ruten har blitt publisert.");
+            //translater.addTranslation("Not published", "Ikke publisert");
+            //translater.addTranslation("The route has not been published.", "Ruten ble ikke publisert.");
+            //translater.addTranslation("ROUTE_DOWNLOAD_SUCCESS", "Rute nedlastet");
+            //translater.addTranslation("ROUTE_DOWNLOAD_SUCCESS_MSG", "Ruten '{0}' ble nedlastet.");
+            //translater.addTranslation("ROUTE_DOWNLOAD_FAILURE", "Nedlastning feilet");
+            //translater.addTranslation("ROUTE_DOWNLOAD_FAILURE_MSG", "Ruten '{0}' kunne ikke bli lastet ned.");
+            //translater.addTranslation("Published", "Publisert");
             translater.addTranslation("Delete", "Slett");
             translater.addTranslation("NumberOfSearchResultHits", "Viser {0} av {1} treff");
             translater.addTranslation("PagesInSearchResult", "{0} av {1}");
@@ -126,10 +129,6 @@ module App.Providers {
             translater.addTranslation("Save", "Lagre");
             translater.addTranslation("Message", "Beskjed");
             translater.addTranslation("LoadingScreen", "Laster inn...");
-            translater.addTranslation("ROUTE_DOWNLOAD_SUCCESS", "Rute nedlastet");
-            translater.addTranslation("ROUTE_DOWNLOAD_SUCCESS_MSG", "Ruten '{0}' ble nedlastet.");
-            translater.addTranslation("ROUTE_DOWNLOAD_FAILURE", "Nedlastning feilet");
-            translater.addTranslation("ROUTE_DOWNLOAD_FAILURE_MSG", "Ruten '{0}' kunne ikke bli lastet ned.");
             translater.addTranslation("Cache result", "Lagre resultat");
             translater.addTranslation("Network", "Nettverk");
             translater.addTranslation("No connection", "Ingen internettilgang");

@@ -1,5 +1,6 @@
-/// <reference path="../Models/Position.ts" />
-/// <reference path="../Diagnostics/Log.ts" />
+/// <reference path="../_references.ts" />
+
+
 /**
     System provider modules
     @namespace System.Providers
@@ -32,7 +33,6 @@ module System.Providers {
         }
 
         public PostInit() {
-            var _this = this;
 
             if (!compatibilityInfo.isMobile) {
                 if (navigator.geolocation) {

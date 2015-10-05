@@ -1,6 +1,6 @@
-/// <reference path="../../../Scripts/typings/knockout/knockout.d.ts" />
-/// <reference path="PointOfInterest.ts" />
-/// <reference path="../../System/Models/Position.ts" />
+
+
+
 
 /**
     Model modules
@@ -25,15 +25,15 @@ module App.Models
             @public
             @type {KnocoutObservableNumber}
         */
-        public numFound: KnockoutObservableNumber = ko.observable(0);
+        public numFound: KnockoutObservable<number> = ko.observable(0);
 
         /**
             Number of total pages
             @member App.Models.SearchResult#numFound
             @public
-            @type {KnockoutObservableNumber}
+            @type {KnockoutObservable<number>}
         */
-        public numPages: KnockoutObservableNumber = ko.observable(0);
+        public numPages: KnockoutObservable<number> = ko.observable(0);
 
         /**
             Observable array of Points of Interest
@@ -41,7 +41,7 @@ module App.Models
             @public
             @type {KnocoutObservablePointOfInterestArray}
         */
-        public items: App.Models.KnockoutObservablePointOfInterestArray = <App.Models.KnockoutObservablePointOfInterestArray>ko.observableArray();
+        public items: KnockoutObservableArray<App.Models.PointOfInterest> = <KnockoutObservableArray<App.Models.PointOfInterest>>ko.observableArray();
     }
 
 

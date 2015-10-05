@@ -1,5 +1,5 @@
-/// <reference path="Diagnostics/Log.ts" />
-/// <reference path="Utils/CompatibilityInfo.ts" />
+
+
 /**
     System root
     @namespace
@@ -14,7 +14,7 @@ module System {
           Log level
           @type System.Diagnostics.LogTypeEnum.Debug
           */
-        public logLevel = System.Diagnostics.LogTypeEnum.Error;
+        public logLevel = System.Diagnostics.LogTypeEnum.VerboseDebug;
         
         /**
           Short name of application
@@ -50,7 +50,7 @@ module System {
 
         public mapUseCache = true;
 
-        public TemplateProviderFolder: string = "./../Templates/";
+        public TemplateProviderFolder: string = "Templates/";
 
         public maxViewControllerBackHistory: number = 2;
         public locationUpdateRateMs = 10000;

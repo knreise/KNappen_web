@@ -1,4 +1,4 @@
-/// <reference path="../_References.ts" />
+
 
 /**
     Controller modules
@@ -43,18 +43,6 @@ module App.Controllers {
                 settings.save();
                 userPopupController.sendSuccess(tr.translate('SETTINGS'), tr.translate('SETTINGS_SAVED'));
                 viewController.goBack();
-                return false;
-            });
-
-            // Need to update module every time settings changes
-            mapCacheProvider.setEnabled(!settings.disableCaching());
-            eventProvider.settings.onPostSave.addHandler(function () { mapCacheProvider.setEnabled(!settings.disableCaching()); }, "SettingsController");
-            eventProvider.settings.onPostLoad.addHandler(function () { mapCacheProvider.setEnabled(!settings.disableCaching()); }, "SettingsController");
-
-            // Clear cache button
-            $("#btnClearCache").mousedown(function () {
-                routeController.clearCache();
-                userPopupController.sendSuccess(tr.translate('Cache'), tr.translate('Cache cleared'));
                 return false;
             });
 

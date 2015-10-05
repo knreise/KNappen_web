@@ -1,5 +1,6 @@
-/// <reference path="../_References.ts" />
-/// <reference path="../Models/PointOfInterestBase.ts" />
+/// <reference path="../_references.ts" />
+
+
 /**
     System provider modules
     @namespace System.Providers
@@ -75,6 +76,9 @@ module System.Providers {
                 theme: null,
                 controls: [
                     new OpenLayers.Control.Attribution(),
+                    //new OpenLayers.Control.Navigation({
+                    //    zoomWheelEnabled: true
+                    //}),
                     new OpenLayers.Control.TouchNavigation({
                         dragPanOptions: {
                             enableKinetic: true
@@ -294,7 +298,7 @@ module System.Providers {
                 new OpenLayers.Size(width, height),
                 content,
                 null, true);
-            
+
             this.map.addPopup(popup);
         }
 

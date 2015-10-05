@@ -1,6 +1,7 @@
-/// <reference path="../ConfigBase.ts" />
-/// <reference path="../Diagnostics/Log.ts" />
-/// <reference path="../../../Scripts/typings/jquery/jquery.d.ts" />
+/// <reference path="../_references.ts" />
+
+
+
 /**
     GUI modules
     @namespace
@@ -48,25 +49,25 @@ module System.GUI {
         constructor() {
             this._this = $(this);
             var _this = this;
-            window.onhashchange = function () { _this.processUrl(); };
+            //window.onhashchange = function () { _this.processUrl(); };
         }
 
-        /**
-            processUrl        
-            @method System.GUI.ViewController#processUrl
-            @type bool
-            @public
-        */
-        public processUrl(): System.GUI.ViewControllerItem {
+        ///**
+        //    processUrl        
+        //    @method System.GUI.ViewController#processUrl
+        //    @type bool
+        //    @public
+        //*/
+        //public processUrl(): System.GUI.ViewControllerItem {
 
-            var hash: string = location.hash;
-            if (hash.indexOf("#") < 0)
-                return null;
+        //    var hash: string = location.hash;
+        //    if (hash.indexOf("#") < 0)
+        //        return null;
 
-            var id = hash.replace('#', '');
-            log.debug("ViewController", "Hash navigation: " + id);
-            return this.openView(id);
-        }
+        //    var id = hash.replace('#', '');
+        //    log.debug("ViewController", "Hash navigation: " + id);
+        //    return this.openView(id);
+        //}
 
         /**
             Add a view to the ViewController.
@@ -143,21 +144,27 @@ module System.GUI {
             @param {boolean} force Force view to be executed (if same as current view)
             @public
           */
-        public selectView(name: string, force: boolean = false): System.GUI.ViewControllerItem {
+        public selectView(name: string, force: boolean = false, recordInUrlHistory: boolean = true): System.GUI.ViewControllerItem {
             if (this.mainMenuOpen(name))
                 return null; // If main menu is open and then selected again, close the menu.
+
+            var oldView = this.oldView;
 
             var view = this.openView(name, force);
             this.addOldViewToHistory();
+
+            if (recordInUrlHistory && (!this.oldView || this.oldView.name != view.name))
+                historyController.addHistorySnapshot();
+            //historyController.addToCurrentSnapshot({View: name});
             return view;
         }
 
-        public selectViewWithoutHistory(name: string, force: boolean = false): void {
-            if (this.mainMenuOpen(name))
-                return null; // If main menu is open and then selected again, close the menu.
+        //public selectViewWithoutHistory(name: string, force: boolean = false): void {
+        //    if (this.mainMenuOpen(name))
+        //        return null; // If main menu is open and then selected again, close the menu.
 
-            this.openView(name, force);
-        }
+        //    this.openView(name, force);
+        //}
 
         private mainMenuOpen(selectedViewName: string): boolean {
             if (this.currentView && this.currentView.name === "mainMenu" && selectedViewName === "mainMenu") {
@@ -182,8 +189,7 @@ module System.GUI {
 
         private openView(name: string, force: boolean = false): System.GUI.ViewControllerItem {
             var view = this.knownViews[name];
-            if (!view)
-            {
+            if (!view) {
                 // Sanity check
                 log.error("ViewController", "selectView: View '" + name + "' does not exist.");
                 return null;

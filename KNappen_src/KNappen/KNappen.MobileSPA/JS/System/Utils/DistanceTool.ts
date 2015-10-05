@@ -1,4 +1,5 @@
-/// <reference path="../_References.ts" />
+/// <reference path="../_references.ts" />
+
 /**
     Distance calculating
     @namespace System.Utils

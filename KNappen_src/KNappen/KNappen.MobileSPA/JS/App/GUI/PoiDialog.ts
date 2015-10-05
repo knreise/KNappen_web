@@ -1,4 +1,4 @@
-/// <reference path="../_References.ts" />
+
 
 //todo: move to poicontroller
 // TODO2: IS THIS IN USE AT ALL?

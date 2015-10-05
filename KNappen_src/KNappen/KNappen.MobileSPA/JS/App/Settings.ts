@@ -1,5 +1,5 @@
-﻿/// <reference path="_References.ts" />
-/// <reference path="../../Scripts/typings/knockout/knockout.d.ts" />
+﻿
+
 
 module App {
 
@@ -10,23 +10,23 @@ module App {
     export class Settings {
 
 
-        public mapTypes: KnockoutObservableArray;
-        public mapZoomLevels: KnockoutObservableArray;
-        public searchDistances: KnockoutObservableArray;
-        public searchCategories: KnockoutObservableArray;
-        public resultAmounts: KnockoutObservableArray;
-        public views: KnockoutObservableArray;
+        public mapTypes: KnockoutObservableArray<any>;
+        public mapZoomLevels: KnockoutObservableArray<any>;
+        public searchDistances: KnockoutObservableArray<any>;
+        public searchCategories: KnockoutObservableArray<any>;
+        public resultAmounts: KnockoutObservableArray<any>;
+        public views: KnockoutObservableArray<any>;
 
-        //public startSearchCategory: KnockoutObservableString = ko.observable('*');
-        public startSearchCategory: KnockoutObservableString = ko.observable('*');
-        public startSearchDistance: KnockoutObservableNumber = ko.observable(1);
-        public startMapType: KnockoutObservableString = ko.observable('WMS:std0:norges_grunnkart');
-        public startMapZoomLevel: KnockoutObservableNumber = ko.observable(14);
-        public startResultAmount: KnockoutObservableNumber = ko.observable(30);
-        public startView: KnockoutObservableString = ko.observable('mapView');
+        //public startSearchCategory: KnockoutObservable<string> = ko.observable('*');
+        public startSearchCategory: KnockoutObservable<string> = ko.observable('*');
+        public startSearchDistance: KnockoutObservable<number> = ko.observable(1);
+        public startMapType: KnockoutObservable<string> = ko.observable('WMS:std0:norges_grunnkart');
+        public startMapZoomLevel: KnockoutObservable<number> = ko.observable(14);
+        public startResultAmount: KnockoutObservable<number> = ko.observable(100);
+        public startView: KnockoutObservable<string> = ko.observable('mapView');
 
-        public adminPassword: KnockoutObservableString = ko.observable('');
-        public disableCaching: KnockoutObservableBool = ko.observable(true);
+        public adminPassword: KnockoutObservable<string> = ko.observable('');
+        public disableCaching: KnockoutObservable<boolean> = ko.observable(true);
 
         constructor() {
         }
@@ -67,8 +67,7 @@ module App {
                     { "text": "Kunst", "category": "Kunst" },
                     { "text": "Planter", "category": "Planter" },
                     { "text": "Stedsnavn", "category": "Stedsnavn" },
-                    { "text": "Verneområder", "category": "Verneområder" },
-                    { "text": "Wikipedia", "category": "Wikipedia" }
+                    { "text": "Verneområder", "category": "Verneområder" }
                 ]);
             }
 

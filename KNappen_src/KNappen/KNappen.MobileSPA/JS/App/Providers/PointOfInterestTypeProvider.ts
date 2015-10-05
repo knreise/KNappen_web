@@ -1,4 +1,4 @@
-/// <reference path="../_References.ts" />
+
 
 /**
     Model modules
@@ -85,27 +85,27 @@ module App.Providers {
         */
         constructor() {
             this.poiTypeData = new App.Providers.PointOfInterestTypes();
-            this.poiTypeData.categories["Alle kategorier"] = new App.Providers.CategoryItem("Alle kategorier", "*", "./../Content/images/Categories/defaultCategory.png");
-            this.poiTypeData.categories["Arkeologi"] = new App.Providers.CategoryItem("Arkeologi", "Arkeologi", "./../Content/images/Categories/arkeologi.png");
-            this.poiTypeData.categories["Arkitektur"] = new App.Providers.CategoryItem("Arkitektur", "Arkitektur", "./../Content/images/Categories/arkitektur.png");
-            this.poiTypeData.categories["Dyr"] = new App.Providers.CategoryItem("Dyr", "Dyr", "./../Content/images/Categories/dyr.png");
-            this.poiTypeData.categories["Folketelling"] = new App.Providers.CategoryItem("Folketelling", "Folketelling", "./../Content/images/Categories/folketelling.png");
-            this.poiTypeData.categories["Fugler"] = new App.Providers.CategoryItem("Fugler", "Fugler", "./../Content/images/Categories/fugler.png");
-            this.poiTypeData.categories["Historie og samfunn"] = new App.Providers.CategoryItem("Historie og samfunn", "Historie og samfunn", "./../Content/images/Categories/historieogsamfunn.png");
-            this.poiTypeData.categories["Kulturminner"] = new App.Providers.CategoryItem("Kulturminner", "Kulturminner", "./../Content/images/Categories/kulturminne.png");
-            this.poiTypeData.categories["Kunst"] = new App.Providers.CategoryItem("Kunst", "Kunst", "./../Content/images/Categories/kunst.png");
-            this.poiTypeData.categories["Planter"] = new App.Providers.CategoryItem("Planter", "Planter", "./../Content/images/Categories/planter.png");
-            this.poiTypeData.categories["Stedsnavn"] = new App.Providers.CategoryItem("Stedsnavn", "Stedsnavn", "./../Content/images/Categories/stedsnavn.png");
-            this.poiTypeData.categories["Verneområder"] = new App.Providers.CategoryItem("Verneområder", "Verneområder", "./../Content/images/Categories/verneomrader.png");
-            this.poiTypeData.categories["Wikipedia"] = new App.Providers.CategoryItem("Wikipedia", "Wikipedia", "./../Content/images/Categories/wikipedia.png");
-            this.poiTypeData.genres["Fagdata"] = new App.Providers.GenreItem("Fagdata", "fagdata", "./../Content/images/Genres/fagdata.png");
-            this.poiTypeData.genres["Leksikonartikler"] = new App.Providers.GenreItem("Leksikonartikler", "wikipedia", "./../Content/images/Genres/leksikon.png");
-            this.poiTypeData.genres["Fortellinger"] = new App.Providers.GenreItem("Fortellinger", "digitaltfortalt", "./../Content/images/Genres/fortelling.png");
-            this.poiTypeData.medias["Tekst"] = new App.Providers.MediaTypeItem("Tekst", "TEXT", "./../Content/images/MediaTypes/text.png");
-            this.poiTypeData.medias["Bilde"] = new App.Providers.MediaTypeItem("Bilde", "IMAGE", "./../Content/images/MediaTypes/image.png");
-            this.poiTypeData.medias["Lyd"] = new App.Providers.MediaTypeItem("Lyd", "SOUND", "./../Content/images/MediaTypes/sound.png");
-            this.poiTypeData.medias["Video"] = new App.Providers.MediaTypeItem("Video", "VIDEO", "./../Content/images/MediaTypes/video.png");
-            this.poiTypeData.medias["Alle medietyper"] = new App.Providers.MediaTypeItem("Alle medietyper", "*", "./../Content/images/MediaTypes/text.png");
+            this.poiTypeData.categories["Alle kategorier"] = new App.Providers.CategoryItem("Alle kategorier", "*", "Content/images/Categories/defaultCategory.png");
+            this.poiTypeData.categories["Arkeologi"] = new App.Providers.CategoryItem("Arkeologi", "Arkeologi", "Content/images/Categories/arkeologi.png");
+            this.poiTypeData.categories["Arkitektur"] = new App.Providers.CategoryItem("Arkitektur", "Arkitektur", "Content/images/Categories/arkitektur.png");
+            this.poiTypeData.categories["Dyr"] = new App.Providers.CategoryItem("Dyr", "Dyr", "Content/images/Categories/dyr.png");
+            this.poiTypeData.categories["Folketelling"] = new App.Providers.CategoryItem("Folketelling", "Folketelling", "Content/images/Categories/folketelling.png");
+            this.poiTypeData.categories["Fugler"] = new App.Providers.CategoryItem("Fugler", "Fugler", "Content/images/Categories/fugler.png");
+            this.poiTypeData.categories["Historie og samfunn"] = new App.Providers.CategoryItem("Historie og samfunn", "Historie og samfunn", "Content/images/Categories/historieogsamfunn.png");
+            this.poiTypeData.categories["Kulturminner"] = new App.Providers.CategoryItem("Kulturminner", "Kulturminner", "Content/images/Categories/kulturminne.png");
+            this.poiTypeData.categories["Kunst"] = new App.Providers.CategoryItem("Kunst", "Kunst", "Content/images/Categories/kunst.png");
+            this.poiTypeData.categories["Planter"] = new App.Providers.CategoryItem("Planter", "Planter", "Content/images/Categories/planter.png");
+            this.poiTypeData.categories["Stedsnavn"] = new App.Providers.CategoryItem("Stedsnavn", "Stedsnavn", "Content/images/Categories/stedsnavn.png");
+            this.poiTypeData.categories["Verneområder"] = new App.Providers.CategoryItem("Verneområder", "Verneområder", "Content/images/Categories/verneomrader.png");
+            //this.poiTypeData.categories["Wikipedia"] = new App.Providers.CategoryItem("Wikipedia", "Wikipedia", "Content/images/Categories/wikipedia.png");
+            this.poiTypeData.genres["Fagdata"] = new App.Providers.GenreItem("Fagdata", "fagdata", "Content/images/Genres/fagdata.png");
+            this.poiTypeData.genres["Leksikonartikler"] = new App.Providers.GenreItem("Leksikonartikler", "wikipedia", "Content/images/Genres/leksikon.png");
+            this.poiTypeData.genres["Fortellinger"] = new App.Providers.GenreItem("Fortellinger", "digitaltfortalt", "Content/images/Genres/fortelling.png");
+            this.poiTypeData.medias["Tekst"] = new App.Providers.MediaTypeItem("Tekst", "TEXT", "Content/images/MediaTypes/text.png");
+            this.poiTypeData.medias["Bilde"] = new App.Providers.MediaTypeItem("Bilde", "IMAGE", "Content/images/MediaTypes/image.png");
+            this.poiTypeData.medias["Lyd"] = new App.Providers.MediaTypeItem("Lyd", "SOUND", "Content/images/MediaTypes/sound.png");
+            this.poiTypeData.medias["Video"] = new App.Providers.MediaTypeItem("Video", "VIDEO", "Content/images/MediaTypes/video.png");
+            this.poiTypeData.medias["Alle medietyper"] = new App.Providers.MediaTypeItem("Alle medietyper", "*", "Content/images/MediaTypes/text.png");
         }
 
         /**
@@ -120,19 +120,50 @@ module App.Providers {
         }
 
         private startDownload() {
-            log.debug("PointOfInterestTypeProvider", "startDownload(): " + config.poiTypeDataUrl);
-            var _this = this;
-            var poiDlItem = new System.Providers.HttpDownloadItem("poiTypeData", config.poiTypeDataUrl,
-                function (data: string) {
-                    log.debug("PointOfInterestTypeProvider", "startDownload() success: Processing: " + config.poiTypeDataUrl);
-                    _this.poiTypeData = new App.Providers.PointOfInterestTypes();
-                    _this.poiTypeData = serializer.deserializeJSObject(data, this.poiTypeData);
-                    _this.savePoITypeData();
-                    _this.updateDependencies();
-                }, function (message: string) {
-                    log.error("PointOfInterestTypeProvider", "Error downloading poiTypeData.");
-                });
-            httpDownloadProvider.enqueueItem("General", System.Providers.HttpDownloadQueuePriority.High, poiDlItem);
+            //log.debug("PointOfInterestTypeProvider", "startDownload(): " + config.poiTypeDataUrl);
+            //var _this = this;
+            this.poiTypeData =
+            <any>{
+                "categories": [
+                    { "text": "Alle kategorier", "category": "*", "icon": "Content/images/Categories/defaultCategory.png" },
+                    { "text": "Arkeologi", "category": "Arkeologi", "icon": "Content/images/Categories/arkeologi.png" },
+                    { "text": "Arkitektur", "category": "Arkitektur", "icon": "Content/images/Categories/arkitektur.png" },
+                    { "text": "Dyr", "category": "Dyr", "icon": "Content/images/Categories/dyr.png" },
+                    { "text": "Folketelling", "category": "Folketelling", "icon": "Content/images/Categories/folketelling.png" },
+                    { "text": "Fugler", "category": "Fugler", "icon": "Content/images/Categories/fugler.png" },
+                    { "text": "Historie og samfunn", "category": "Historie og samfunn", "icon": "Content/images/Categories/historieogsamfunn.png" },
+                    { "text": "Kulturminner", "category": "Kulturminner", "icon": "Content/images/Categories/kulturminne.png" },
+                    { "text": "Kunst", "category": "Kunst", "icon": "Content/images/Categories/kunst.png" },
+                    { "text": "Planter", "category": "Planter", "icon": "Content/images/Categories/planter.png" },
+                    { "text": "Stedsnavn", "category": "Stedsnavn", "icon": "Content/images/Categories/stedsnavn.png" },
+                    { "text": "Verneområder", "category": "Verneområder", "icon": "Content/images/Categories/verneomrader.png" },
+                    //{ "text": "Wikipedia", "category": "Wikipedia", "icon": "Content/images/Categories/wikipedia.png" }
+                ],
+                "genres": [
+                    { "text": "Fagdata", "type": "fagdata", "icon": "Content/images/Genres/fagdata.png" },
+                    { "text": "Leksikonartikler", "type": "wikipedia", "icon": "Content/images/Genres/leksikon.png" },
+                    { "text": "Fortellinger", "type": "digitaltfortalt", "icon": "Content/images/Genres/fortelling.png" }
+                ],
+                "medias": [
+                    { "text": "Tekst", "type": "TEXT", "icon": "Content/images/MediaTypes/text.png" },
+                    { "text": "Bilde", "type": "IMAGE", "icon": "Content/images/MediaTypes/image.png" },
+                    { "text": "Lyd", "type": "SOUND", "icon": "Content/images/MediaTypes/sound.png" },
+                    { "text": "Video", "type": "VIDEO", "icon": "Content/images/MediaTypes/video.png" },
+                    { "text": "Alle medietyper", "type": "*", "icon": "Content/images/MediaTypes/text.png" }
+                ]
+            };
+
+            //var poiDlItem = new System.Providers.HttpDownloadItem("poiTypeData", config.poiTypeDataUrl,
+            //    function (data: string) {
+            //        log.debug("PointOfInterestTypeProvider", "startDownload() success: Processing: " + config.poiTypeDataUrl);
+            //        _this.poiTypeData = new App.Providers.PointOfInterestTypes();
+            //        _this.poiTypeData = serializer.deserializeJSObject(data, this.poiTypeData);
+                    this.savePoITypeData();
+                    this.updateDependencies();
+                //}, function (message: string) {
+                //    log.error("PointOfInterestTypeProvider", "Error downloading poiTypeData.");
+                //});
+            //httpDownloadProvider.enqueueItem("General", System.Providers.HttpDownloadQueuePriority.High, poiDlItem);
         }
 
         private loadPoITypeData() {

@@ -1,4 +1,4 @@
-/// <reference path="../_References.ts" />
+
 
 module App.Controllers
 {
@@ -13,7 +13,7 @@ module App.Controllers
         }
 
         public init(): void {
-            phoneGapInterop.onPause.addHandler(function () { loadingScreenController.hideLoadingScreen(); }, "LoadingScreenController");
+            //phoneGapInterop.onPause.addHandler(function () { loadingScreenController.hideLoadingScreen(); }, "LoadingScreenController");
         }
 
         public showLoadingScreen(text: string) {

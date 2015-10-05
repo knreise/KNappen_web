@@ -1,4 +1,4 @@
-/// <reference path="../_References.ts" />
+
 /**
     Providers
     @namespace App.Providers
@@ -8,8 +8,8 @@ module App.Providers
     declare var $;
     export class MultiViewBindingProvider
     {
-        public searchCriteria: KnockoutObservableAny = ko.observable();
-        public searchResult: KnockoutObservableAny = ko.observable();
+        public searchCriteria: KnockoutObservable<any> = ko.observable();
+        public searchResult: KnockoutObservable<any> = ko.observable();
         public settings = ko.observable();
 
         /**

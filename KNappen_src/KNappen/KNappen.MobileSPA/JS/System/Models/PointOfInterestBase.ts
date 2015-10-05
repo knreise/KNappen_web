@@ -1,18 +1,19 @@
-/// <reference path="../../../Scripts/typings/knockout/knockout.d.ts" />
-/// <reference path="../Models/Position.ts" />
+/// <reference path="../_references.ts" />
+
+
 /**
     Models
     @namespace System.Models
 */
 module System.Models {
 
-    export interface KnockoutObservablePointOfInterestBaseArray extends KnockoutObservableArray {
-        (): System.Models.PointOfInterestBase[];
-        (value: System.Models.PointOfInterestBase[]): void;
+    //export interface KnockoutObservablePointOfInterestBaseArray extends KnockoutObservableArray {
+    //    (): System.Models.PointOfInterestBase[];
+    //    (value: System.Models.PointOfInterestBase[]): void;
 
-        subscribe(callback: (newValue: System.Models.PointOfInterestBase[]) => void , target?: any, topic?: string): KnockoutSubscription;
-        notifySubscribers(valueToWrite: System.Models.PointOfInterestBase[], topic?: string);
-    }
+    //    subscribe(callback: (newValue: System.Models.PointOfInterestBase[]) => void , target?: any, topic?: string): KnockoutSubscription;
+    //    notifySubscribers(valueToWrite: System.Models.PointOfInterestBase[], topic?: string);
+    //}
 
     /**
       * The base object for PointOfInterest, contain basic properties
@@ -31,105 +32,105 @@ module System.Models {
             id
             @member System.Models.PointOfInterestBase#id
             @public
-            @type {KnockoutObservableString}
+            @type {KnockoutObservable<string>}
         */
-        public id: KnockoutObservableString = ko.observable();
+        public id: KnockoutObservable<string> = <any>ko.observable();
         /**
             pos
             @member System.Models.PointOfInterestBase#pos
             @public
-            @type {System.Models.KnockoutObservablePosition}
+            @type {KnockoutObservable<System.Models.Position>}
         */
-        public pos: System.Models.KnockoutObservablePosition = <System.Models.KnockoutObservablePosition>ko.observable();
+        public pos: KnockoutObservable<System.Models.Position> = <any>ko.observable();
 
         /**
             iconURL
             @member System.Models.PointOfInterestBase#iconURL
             @public
-            @type {KnockoutObservableString}
+            @type {KnockoutObservable<string>}
         */
-        public iconURL: KnockoutObservableString = ko.observable("./../Content/images/AppIcons/defaultPoiIcon.png");
+        public iconURL: KnockoutObservable<string> = ko.observable("Content/images/AppIcons/defaultPoiIcon.png");
 
         /**
             iconMediaTypeURL
             @member System.Models.PointOfInterestBase#iconMediaTypeURL
             @public
-            @type {KnockoutObservableString}
+            @type {KnockoutObservable<string>}
         */
-        public iconMediaTypeURL: KnockoutObservableArray = ko.observableArray([]);
+        public iconMediaTypeURL: KnockoutObservableArray<string> = ko.observableArray([]);
 
         /**
             iconCategoryURL
             @member System.Models.PointOfInterestBase#iconCategoryURL
             @public
-            @type {KnockoutObservableString}
+            @type {KnockoutObservable<string>}
         */
-        public iconCategoryURL: KnockoutObservableString = ko.observable("./../Content/images/Categories/defaultCategory.png");
+        public iconCategoryURL: KnockoutObservable<string> = ko.observable("Content/images/Categories/defaultCategory.png");
 
         /**
             iconInactiveCategoryURL
             @member System.Models.PointOfInterestBase#iconInactiveCategoryURL
             @public
-            @type {KnockoutObservableString}
+            @type {KnockoutObservable<string>}
         */
-        public iconInactiveCategoryURL: KnockoutObservableString = ko.observable("./../Content/images/Categories/defaultCategory.png");
+        public iconInactiveCategoryURL: KnockoutObservable<string> = ko.observable("Content/images/Categories/defaultCategory.png");
 
         /**
             iconActiveCategoryURL
             @member System.Models.PointOfInterestBase#iconActiveCategoryURL
             @public
-            @type {KnockoutObservableString}
+            @type {KnockoutObservable<string>}
         */
-        public iconActiveCategoryURL: KnockoutObservableString = ko.observable("./../Content/images/Categories/defaultCategory.png.Active.png");
+        public iconActiveCategoryURL: KnockoutObservable<string> = ko.observable("Content/images/Categories/defaultCategory.png.Active.png");
 
         /**
             iconGenreURL
             @member System.Models.PointOfInterestBase#iconGenreURL
             @public
-            @type {KnockoutObservableString}
+            @type {KnockoutObservable<string>}
         */
-        public iconGenreURL: KnockoutObservableString = ko.observable("./../Content/images/AppIcons/defaultPoiIcon.png");
+        public iconGenreURL: KnockoutObservable<string> = ko.observable("Content/images/AppIcons/defaultPoiIcon.png");
         /**
             iconWidth
             @member System.Models.PointOfInterestBase#iconWidth
             @public
-            @type {KnockoutObservableNumber}
+            @type {KnockoutObservable<number>}
         */
-        public iconWidth: KnockoutObservableNumber = ko.observable(40);
+        public iconWidth: KnockoutObservable<number> = ko.observable(40);
         /**
             iconHeight
             @member System.Models.PointOfInterestBase#iconHeight
             @public
-            @type {KnockoutObservableNumber}
+            @type {KnockoutObservable<number>}
         */
-        public iconHeight: KnockoutObservableNumber = ko.observable(40);
+        public iconHeight: KnockoutObservable<number> = ko.observable(40);
         /**
             source
             @member System.Models.PointOfInterestBase#source
             @public
-            @type {KnockoutObservableString}
+            @type {KnockoutObservable<string>}
         */
-        public source: KnockoutObservableString = ko.observable('');
+        public source: KnockoutObservable<string> = ko.observable('');
         /**
             sourceType
             @member System.Models.PointOfInterestBase#sourceType
             @public
-            @type {KnockoutObservableString}
+            @type {KnockoutObservable<string>}
         */
-        public sourceType: KnockoutObservableString = ko.observable('');
+        public sourceType: KnockoutObservable<string> = ko.observable('');
         /**
             distanceInKm
             @member System.Models.PointOfInterestBase#distanceInKm
             @public
-            @type {KnockoutObservableString}
+            @type {KnockoutObservable<string>}
         */
-        public distanceInKm: KnockoutObservableString = ko.observable('-');
+        public distanceInKm: KnockoutObservable<string> = ko.observable('-');
         /**
             distance
             @member System.Models.PointOfInterestBase#distance
             @public
-            @type {KnockoutObservableNumber}
+            @type {KnockoutObservable<number>}
         */
-        public distance: KnockoutObservableNumber = ko.observable(0);
+        public distance: KnockoutObservable<number> = ko.observable(0);
     }
 }

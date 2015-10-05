@@ -1,4 +1,4 @@
-/// <reference path="../_References.ts" />
+
 
 /**
     SearchProviders
@@ -17,7 +17,7 @@ module App.SearchProviders {
         }
 
         public items: App.SearchProviders.SSRSearchItem[] = [];
-        public numFound: KnockoutObservableNumber = ko.observable(0);
+        public numFound: KnockoutObservable<number> = ko.observable(0);
     }
     export class SSRSearchItem {
 
@@ -29,11 +29,11 @@ module App.SearchProviders {
         constructor() {
         }
 
-        public ssrId: KnockoutObservableString = ko.observable('');
-        public navnetype: KnockoutObservableString = ko.observable('');
-        public kommunenavn: KnockoutObservableString = ko.observable('');
-        public fylkesnavn: KnockoutObservableString = ko.observable('');
-        public stedsnavn: KnockoutObservableString = ko.observable('');
+        public ssrId: KnockoutObservable<string> = ko.observable('');
+        public navnetype: KnockoutObservable<string> = ko.observable('');
+        public kommunenavn: KnockoutObservable<string> = ko.observable('');
+        public fylkesnavn: KnockoutObservable<string> = ko.observable('');
+        public stedsnavn: KnockoutObservable<string> = ko.observable('');
         public pos: System.Models.Position = null;
     }
 

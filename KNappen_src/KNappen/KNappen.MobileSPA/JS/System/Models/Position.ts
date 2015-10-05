@@ -1,36 +1,37 @@
-/// <reference path="../_References.ts" />
+/// <reference path="../_references.ts" />
+
 /**
     Models
     @namespace System.Models
 */
 module System.Models {
 
-    export interface KnockoutObservablePosition extends KnockoutObservableBase {
-        lat: KnockoutObservableNumber;
-        lon: KnockoutObservableNumber;
-        alt: KnockoutObservableNumber;
-        acc: KnockoutObservableNumber;
+    //export interface KnockoutObservablePosition extends KnockoutObservableBase {
+    //    lat: KnockoutObservable<number>;
+    //    lon: KnockoutObservable<number>;
+    //    alt: KnockoutObservable<number>;
+    //    acc: KnockoutObservable<number>;
 
-        toString(): string;
+    //    toString(): string;
 
-        (): System.Models.Position;
-        (value: System.Models.Position): void;
+    //    (): System.Models.Position;
+    //    (value: System.Models.Position): void;
 
-        subscribe(callback: (newValue: System.Models.Position) => void , target?: any, topic?: string): KnockoutSubscription;
-        notifySubscribers(valueToWrite: System.Models.Position, topic?: string);
-    }
+    //    subscribe(callback: (newValue: System.Models.Position) => void , target?: any, topic?: string): KnockoutSubscription;
+    //    notifySubscribers(valueToWrite: System.Models.Position, topic?: string);
+    //}
 
     export class Position {
 
-        public lat: KnockoutObservableNumber;
-        public lon: KnockoutObservableNumber;
-        public alt: KnockoutObservableNumber;
-        public acc: KnockoutObservableNumber;
+        public lat: KnockoutObservable<number>;
+        public lon: KnockoutObservable<number>;
+        public alt: KnockoutObservable<number>;
+        public acc: KnockoutObservable<number>;
 
-        public altitudeAccuracy: KnockoutObservableNumber;
-        public heading: KnockoutObservableNumber;
-        public speed: KnockoutObservableNumber;
-        public timestamp: KnockoutObservableDate;
+        public altitudeAccuracy: KnockoutObservable<number>;
+        public heading: KnockoutObservable<number>;
+        public speed: KnockoutObservable<number>;
+        public timestamp: KnockoutObservable<Date>;
 
         /** 
             Position
@@ -51,10 +52,10 @@ module System.Models {
             this.alt = ko.observable(alt);
             this.acc = ko.observable(acc);
 
-            this.altitudeAccuracy = ko.observable();
-            this.heading = ko.observable();
-            this.speed = ko.observable();
-            this.timestamp = ko.observable();
+            this.altitudeAccuracy = <any>ko.observable();
+            this.heading = <any>ko.observable();
+            this.speed = <any>ko.observable();
+            this.timestamp = <any>ko.observable();
         }
 
         public toString(): string {

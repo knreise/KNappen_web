@@ -1,5 +1,6 @@
-/// <reference path="../../../Scripts/typings/google.analytics/ga.d.ts" />
-/// <reference path="../ConfigBase.ts" />
+/// <reference path="../_references.ts" />
+
+
 /**
     System provider modules
     @namespace System.Providers

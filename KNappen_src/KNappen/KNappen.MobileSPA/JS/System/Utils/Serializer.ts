@@ -1,7 +1,8 @@
-/// <reference path="../Providers/StorageProvider.ts" />
-/// <reference path="../../../Scripts/typings/knockout.mapping/knockout.mapping.d.ts" />
-/// <reference path="../../../Scripts/typings/knockout/knockout.d.ts" />
-/// <reference path="../../../Scripts/typings/jquery/jquery.d.ts" />
+/// <reference path="../_references.ts" />
+
+
+
+
 
 /**
     Provider modules
@@ -95,7 +96,23 @@ module System.Utils {
           * @param {any} object Object to serialize
           */
         public serializeKnockoutObject(object: any): string {
-            return ko.mapping.toJSON(object);
+
+            var jsObj = ko.mapping.toJS(object);
+            //debugger;
+            return JSON.stringify(jsObj);
+            //// Create a working copy
+            //var nObj: any = [];
+            //$.extend(nObj, object);
+            //debugger;
+            //// "pos" object is special case where the knockout object contains a knockout object, attempting to unwrap this before serialize
+            //if (nObj['pos'] && nObj['pos']())
+            //    nObj['pos'] = nObj['pos']();
+              
+            //    //nObj['pos'] = ko.observable(ko.mapping.toJS(nObj['pos']()));
+            ////}
+
+
+            //return ko.mapping.toJSON(nObj);
         }
 
         /**
@@ -105,7 +122,8 @@ module System.Utils {
           * @param {any} instanceToUse Object to serialize localstorage data into
           */
         public deserializeJSObject(json: string, instanceToUse?: any): any {
-            var tempObj: any = JSON.parse(json);
+            //var tempObj: any = JSON.parse(json);
+            var tempObj: any = ko.mapping.fromJSON(json);
 
             if (instanceToUse) {
                 $.extend(instanceToUse, tempObj);
@@ -125,17 +143,30 @@ module System.Utils {
             if (!jsonString)
                 return null;
 
-            try {
-                var tempObj: any = ko.mapping.fromJS(JSON.parse(jsonString));
-            } catch (error) { }
+            //debugger;
+            //var tempObj: any;
+            //try {
+            var nObj = JSON.parse(jsonString);
+            //debugger;
+           
 
-            // Copy variables and make them Knockout observable
-            $.extend(instanceToUse, tempObj);
+            ko.mapping.fromJS(nObj, instanceToUse);
+
+            if (nObj['pos']) {
+                //debugger;
+                instanceToUse.pos = ko.observable(ko.mapping.fromJS(nObj['pos']));
+                //debugger;
+            }
+
+            //} catch (error) { }
+
+            //// Copy variables and make them Knockout observable
+            //$.extend(instanceToUse, tempObj);
             //$.each(tempObj, function (k, v) {
             //    instanceToUse[k] = v;
             //});
             //ko.mapping.fromJS(tempObj, instanceToUse);
-
+            
             return instanceToUse;
         }
 

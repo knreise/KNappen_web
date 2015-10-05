@@ -1,4 +1,5 @@
-/// <reference path="../../../Scripts/typings/jquery/jquery.d.ts" />
+/// <reference path="../_references.ts" />
+
 
 /**
     Diagnostics modules
@@ -20,7 +21,7 @@ module System.Diagnostics {
       */
     export class Log {
         // Somewhere to keep events
-        /** @ignore */ private _this: JQuery;
+        /** @ignore */ private _thisJQuery: JQuery;
         private logLevel: System.Diagnostics.LogTypeEnum = null;
 
         private logLevelEnabled_VerboseDebug: boolean = true;
@@ -35,12 +36,11 @@ module System.Diagnostics {
             @classdesc This class contains methods for logging informational messages and errors from the app 
         */
         constructor() {
-            this._this = $(this);
-            var _t = this;
+            this._thisJQuery = $(this);
             // Try to hook up a global exception logger
             try {
-                window.onerror = function (msg: any, url, line) {
-                    _t.log('Error', 'GlobalException', '"' + msg.message + '" in ' + url + ' line ' + line);
+                window.onerror = (msg: any, url, line) => {
+                    this.log('Error', 'GlobalException', '"' + msg.message + '" in ' + url + ' line ' + line);
                 };
             } catch (e) { }
         }
@@ -60,7 +60,7 @@ module System.Diagnostics {
             @public
         */
         public addLogHandler(logHandlerCallback: { (event: JQueryEventObject, logType: string, sender: string, msg: string): void; }) {
-            this._this.on('Log', logHandlerCallback);
+            this._thisJQuery.on('Log', logHandlerCallback);
         }
 
         public setLogLevel(logLevel: System.Diagnostics.LogTypeEnum) {
@@ -131,7 +131,7 @@ module System.Diagnostics {
         /** @ignore */
         private log(logType, sender, msg) {
             this.raw('[' + logType + '] ' + sender + ' ' + msg);
-            this._this.trigger('Log', [logType, sender, msg]);
+            this._thisJQuery.trigger('Log', [logType, sender, msg]);
         }
 
         /** @ignore */
@@ -139,8 +139,8 @@ module System.Diagnostics {
             try {
                 //if (typeof console === "undefined" || typeof console.log === "undefined") {
                 //} else {
-                if ('console' in self && 'log' in console)
-                    console.log(msg);
+                if ('console' in window && 'log' in console)
+                    window.console.log(msg);
 
             } catch (e) { }
 

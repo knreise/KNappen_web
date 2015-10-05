@@ -1,5 +1,6 @@
-/// <reference path="../Startup.ts" />
-/// <reference path="../Diagnostics/Log.ts" />
+/// <reference path="../_references.ts" />
+
+
 /**
     System utilities
     @namespace System.Utils

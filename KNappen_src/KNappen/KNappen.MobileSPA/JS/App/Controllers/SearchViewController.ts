@@ -1,4 +1,4 @@
-/// <reference path="../_References.ts" />
+
 module App.Controllers {
     export class SearchViewController {
 

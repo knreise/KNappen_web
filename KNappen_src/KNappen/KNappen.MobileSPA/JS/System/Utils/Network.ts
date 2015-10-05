@@ -1,4 +1,5 @@
-/// <reference path="../_References.ts" />
+/// <reference path="../_references.ts" />
+
 /**
     Provider modules
     @namespace System.Utils
@@ -22,8 +23,9 @@ module System.Utils {
           * @returns {boolean} True if there is a connection, otherwise false. This will always return true on non-mobile devices.
           */
         public isConnected(): boolean {
-            if (navigator.network) // navigator.network is a plugin for PhoneGap, i.e. it doesnt exist on non-mobile devices.
-                return (navigator.network.connection.type !== Connection.NONE);
+            var nav = <any>navigator;
+            if (nav.network) // navigator.network is a plugin for PhoneGap, i.e. it doesnt exist on non-mobile devices.
+                return (nav.network.connection.type !== Connection.NONE);
             return true; // Assume network conectivity on non-mobile devices.
         }
 

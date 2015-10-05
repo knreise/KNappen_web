@@ -13,12 +13,12 @@ module PhoneGap.InteropProviders {
         
         private onBackButton() {
             log.info("PhoneGapButtonProvider", "Back button pressed.");
-            phoneGapProvider.callbackBackButton();
+            //phoneGapProvider.callbackBackButton();
         }
 
         private onMenuButton() {
             log.info("PhoneGapButtonProvider", "Menu button pressed.");
-            phoneGapProvider.callbackMenuButton();
+            //phoneGapProvider.callbackMenuButton();
         }
     }
 }

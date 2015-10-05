@@ -1,10 +1,11 @@
-/// <reference path="../_References.ts" />
+/// <reference path="../_references.ts" />
+
 /**
     System provider modules
     @namespace System.Providers
 */
 module System.Providers {
-
+    import Moment = moment.Moment;
     declare var cache: any;
     declare var localStorageStore: any;
     declare var arrayStore: any;
@@ -47,11 +48,7 @@ module System.Providers {
           * @method System.Providers.StorageProvider#preInit
           */
         public preInit(): void {
-            if (this.hasDatabase) {
-                phoneGapProvider.SqlRead("settings", () => startup.finishedPreInit("StarageProvider"));
-            } else {
                 startup.finishedPreInit("StorageProvider");
-            }
         }
 
         /**
@@ -72,9 +69,6 @@ module System.Providers {
             this.store.set(key, value);
             this.store.set(key + ".meta", meta);
 
-            if (this.hasDatabase && old != value) {
-                phoneGapProvider.SqlSetKey("settings", key, value, meta);
-            }
         }
         
         /**
@@ -106,9 +100,6 @@ module System.Providers {
         public remove(key: string) {
             delete this.store.get(key);
             delete this.store.get(key + ".meta");
-            if (this.hasDatabase) {
-                phoneGapProvider.SqlRemoveKey("settings", key);
-            }
         }
 
         /**

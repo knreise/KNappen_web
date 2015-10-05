@@ -1,6 +1,5 @@
 /// <reference path="Providers/GeoLocationProvider.ts" />
 /// <reference path="../JS/System/ConfigBase.ts" />
-/// <reference path="InteropProviders/SqlProvider.ts" />
 /// <reference path="InteropProviders/ButtonProvider.ts" />
 /// <reference path="PhoneGapInterop.ts" />
 /// <reference path="../JS/System/Utils/CompatibilityInfo.ts" />

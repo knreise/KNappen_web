@@ -1,5 +1,5 @@
-/// <reference path="../_References.ts" />
-/// <reference path="../Diagnostics/Log.ts" />
+
+
 /**
     System provider modules
     @namespace System.Providers
